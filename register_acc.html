@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <!-- Mobile Specific Meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="author" content="">
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <!-- Custom style -->
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle " data-target="#myNavBar" data-toggle="collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand hidden-sm" href="#">Flash</a>
+                    </div>
+                    <div class="navbar-collapse collapse" id="myNavBar">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#" class="active">Home</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Accounts<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Register</a></li>
+                                    <li><a href="#">Login</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Funds<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Deposit</a></li>
+                                    <li><a href="#">Withdraw</a></li>
+                                    <li><a href="#">Transfer</a></li>
+                                    <li><a href="#">Savings</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Education</a></li>
+                            <li><a href="#">Partners</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Staff<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Login</a></li>
+                                    <li><a href="#">Register</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>  <!-- //End container --> 
+
+        <div class="Register">
+            <div class="container">
+                <h1>Register Account</h1>
+                <form class="col-xs-12 col-sm-10 col-md-8 col-lg-8">
+                    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                        <label for="firstname">First Name</label>
+                        <input type="text" class="form-control" id="firstname" placeholder="First Name">
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <label for="lastname">Last Name</label>
+                            <input type="text" class="form-control" id="lastname" placeholder="First Name">
+                    </div>
+                    <div class="form-group ">
+                        <label for="idNum">ID Number</label>
+                        <input type="text" class="form-control" id="idNum" placeholder="ID Number">
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Password">
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <label for="confirm-password">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirm-password" placeholder="Confirm Password">
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                        <label for="postCode">Postal Address</label>
+                        <input type="text" class="form-control" id="postCode" placeholder="Postal Address">
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <label for="town">Town</label>
+                            <input type="text" class="form-control" id="town" placeholder="Town">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="abc@abc.com">
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                        <label for="phone">Phone</label>
+                        <input type="text" class="form-control" id="phone" placeholder="Phone Number">
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                        <label for="dob">Date Of Birth</label>
+                        <input type="date" class="form-control" id="dob" placeholder="">
+                    </div>                    
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <select class="form-control" id="gender">
+                            <option value="">Select</option>
+                            <option value="female">Female</option>
+                            <option value="male">Male</option>
+                          </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="idCard">Copy of ID Card/Passport</label>
+                      <input type="file" id="idCard">
+                      <p class="help-block">Selct a copy of your ID Card</p>
+                    </div>                    
+                    <div class="checkbox">
+                        <label>
+                        <input type="checkbox"> 
+                            Check here to indicate that you have read and agreed to the terms of 
+                            the <a href="#">Faida Sacco Agreement Policy</a>.
+                        </label>
+                    </div>
+                    <button type="clear" class="btn btn-danger">Clear</button>
+                    <button type="submit" class="btn btn-default">Submit Form</button>
+                </form>
+            </div>
+        </div>
+
+
+        <hr>
+
+        <footer>
+            <div class="footer">
+                <div class="container-fluid">
+                    <p class="text-center">&copy; 2018 | <a href="#">Flash Sacco Ltd</a></p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="js/jquery-2.1.3-.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+    </body>
+</html>
