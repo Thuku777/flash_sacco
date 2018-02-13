@@ -37,6 +37,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts.login',
+    'accounts.register',
+    'contact',
+    'education',
+    'funds.deposit',
+    'funds.savings',
+    'funds.transfer',
+    'funds.withdraw',
+    'partners',
+    'services',
 ]
 
 MIDDLEWARE = [
@@ -105,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Nairobi/Kenya'
 
 USE_I18N = True
 
