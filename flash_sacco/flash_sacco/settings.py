@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'funds.savings',
     'funds.transfer',
     'funds.withdraw',
+    'home',
     'partners',
     'services',
 ]

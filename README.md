@@ -1,7 +1,7 @@
-#flash Sacco
+# flash Sacco
 *An easy way to manage Saccos*
 
-##How to contribute
+## How to contribute
 ### 1. Download
 `$ mkvirtualenv --clear projectname`
 Now, you need the *django-sample-app* project files in your workspace:
