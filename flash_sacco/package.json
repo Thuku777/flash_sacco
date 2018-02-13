@@ -1,0 +1,25 @@
+{
+  "name": "flash_sacco",
+  "version": "1.0.0",
+  "description": "Flash Sacco is an easy to use, all functional and efficient way to manage SACCOs",
+  "main": "flash_sacco/urls.py",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brianokinyi/flash_sacco.git"
+  },
+  "keywords": [
+    "SACCO",
+    "DJango",
+    "Kenya",
+    "Dedan Kimathi University"
+  ],
+  "author": "brianokinyi harunkiprotich dennisndegwa ronniekibet charlesmwaniki",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brianokinyi/flash_sacco/issues"
+  },
+  "homepage": "https://github.com/brianokinyi/flash_sacco#readme"
+}
