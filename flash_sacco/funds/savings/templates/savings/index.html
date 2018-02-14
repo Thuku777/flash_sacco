@@ -1,0 +1,104 @@
+
+
+
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Savings</title>
+
+
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta name="keywords" content="html, Msafiri" />
+    <meta name="author" content="msafiri">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- GOOGLE FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600' rel='stylesheet' type='text/css'>
+    <!-- /GOOGLE FONTS -->
+    {% load static %}
+    <link rel="stylesheet" href="..{% static "/css/bootstrap.css" %}">
+    <link rel="stylesheet" href="..{% static "/css/font-awesome.css" %}">
+    <link rel="stylesheet" href="..{% static "/css/icomoon.css" %}">
+    <link rel="stylesheet" href="..{% static "/css/styles.css" %}">
+
+</head>
+
+<body>
+
+    <div class="global-wrap">
+        <header id="main-header">
+  
+        </header>
+
+        <div class="container">
+            <h1 class="page-title">Savings Details </h1>
+        </div>
+{{ AccNo }}
+
+        <div class="container">
+            <div class="row" data-gutter="60">
+                <div class="col-md-4">
+                    <h3>Welcome {{ username.userAccName }}.</h3>
+                    <p>We are a public SME banking operator and ground handler. Our advantage is being small enough to treat every small client as an individual and not just the statistics.</p>
+                    <p>Our packages are planned to suit clients looking for a comfortable standard of saving and withdrawals together with an informative guide coupled with an impressive track record.</p>
+                </div>
+                
+
+
+                <div class="col-md-4">
+                    <h3>Savings Details </h3>
+
+
+</div>
+
+<div class="col-md-4">
+<h3> User  Details</h3>
+    <div class="form-group form-group-icon-left">
+        <h4>Account Name</h4>
+  <p>{{ recn }}</p>
+    </div>
+
+	    <div class="form-group form-group-icon-left">
+        <h4>Account Number</h4>
+  <p>  {{ username.userAccNo }}</p>
+    </div>
+	
+	    <div class="form-group form-group-icon-left">
+        <h4>Account Balance</h4>
+  <p>{{ username.userAccBal }}</p>
+    </div>
+	
+	    <div class="form-group form-group-icon-left">
+        <h4>Date </h4>
+  <p>Wanaiume Self Help Group</p>
+    </div>
+	
+                </div>
+				
+				
+            </div>
+        </div>
+
+
+
+        <div class="gap"></div>
+ 
+        <script src="..{% static "/js/bootstrap.js" %}"></script>
+        <script src="..{% static "/js/slimmenu.js" %}"></script>
+        <script src="..{% static "/js/bootstrap-datepicker.js" %}"></script>
+        <script src="..{% static "/js/bootstrap-timepicker.js" %}"></script>
+        <script src="..{% static "/js/nicescroll.js" %}"></script>
+
+        <script src="..{% static "/js/owl-carousel.js" %}"></script>
+        <script src="..{% static "/js/fitvids.js" %}"></script>
+        <script src="..{% static "/js/tweet.js" %}"></script>
+        <script src="..{% static "/js/countdown.js" %}"></script>
+        <script src="..{% static "/js/gridrotator.js" %}"></script>
+        <script src="..{% static "/js/custom.js" %}"></script>
+    </div>
+</body>
+
+</html>
+
+
