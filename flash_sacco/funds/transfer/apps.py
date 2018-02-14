@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class DepositConfig(AppConfig):
-    name = 'deposit'
+class TransferConfig(AppConfig):
+    name = 'transfer'
