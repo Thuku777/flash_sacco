@@ -19,7 +19,7 @@ class ConfirmRedirect(TemplateView):
 
     def get_context_data(self, **kwargs):
         context=super(ConfirmRedirect, self).get_context_data(**kwargs)
-        context["title"]="This is a useless page"
+        context["username"]="This is a useless page"
         return context
 
 
@@ -66,10 +66,11 @@ def formHandler(request, username):
             recptAccNo=form.cleaned_data['recptAccNo']
             # redirect to a new URL:
             message='method is safe'
-
-            DBobj=get_object_or_404(Savings, userAccNo__exact=AccNo)
-            recptobj =get_object_or_404(Savings, userAccNo__exact=recptAccNo)
             try:
+
+                DBobj = get_object_or_404( Savings, userAccNo__exact=AccNo )
+                recptobj = get_object_or_404( Savings, userAccNo__exact=recptAccNo )
+
                 AccBal = DBobj.userAccBal
                 receptAccBal=recptobj.userAccBal
 
@@ -81,12 +82,12 @@ def formHandler(request, username):
                     AccBal = AccBal - AccAmount
                     receptAccBal += AccAmount
                    # MyModel.objects.get( name=name ).update( field=value )
-                    Savings.objects.get(userAccNo__exact=AccNo).save()
-                    Savings.objects.get( userAccNo__exact=recptAccNo ).save()
-                    message='Transfer Complete'
+                    Savings.objects.filter( userAccNo__exact=AccNo ).update(userAccBal=AccBal)
+                    Savings.objects.filter( userAccNo__exact=recptAccNo ).update( userAccBal=receptAccBal )
+                    message='success'
                     #return HttpResponseRedirect('index.html',{'message':message})
                     # return HttpResponseRedirect(render(request, 'transfer/confirm/index.html', {'message':message}))
-                    return HttpResponseRedirect( reverse( 'transfer:confirm' ) )
+                    return HttpResponseRedirect( reverse( 'transfer:confirm',), {'username':DBobj} )
 
     # if a GET (or any other method) we'll create a blank form
     else:
