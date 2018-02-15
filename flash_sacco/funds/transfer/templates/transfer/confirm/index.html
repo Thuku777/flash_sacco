@@ -1,106 +1,107 @@
-
-
-
 <!DOCTYPE HTML>
 <html>
 
 <head>
-    <title>Success</title>
+    <title>Traveler - Success payment</title>
 
 
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-    <meta name="keywords" content="html, Msafiri" />
-    <meta name="author" content="msafiri">
+    <meta name="author" content="DarthVader">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- GOOGLE FONTS -->
+
+    <!-- GOOGLE FONTS -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600' rel='stylesheet' type='text/css'>
     <!-- /GOOGLE FONTS -->
-    {% load static %}
-    <link rel="stylesheet" href="../..{% static "/css/bootstrap.css" %}">
-    <link rel="stylesheet" href="../..{% static "/css/font-awesome.css" %}">
-    <link rel="stylesheet" href="../..{% static "/css/icomoon.css" %}">
-    <link rel="stylesheet" href="../..{% static "/css/styles.css" %}">
+        {% load static %}
+    <link rel="stylesheet" href="..{% static "/css/bootstrap.css" %}">
+    <link rel="stylesheet" href="..{% static "/css/font-awesome.css" %}">
+    <link rel="stylesheet" href="..{% static "/css/icomoon.css" %}">
+    <link rel="stylesheet" href="..{% static "/css/styles.css" %}">
+            <script src="..{% static "/js/modernizr.js" %}"></script>
+
 
 </head>
 
 <body>
 
-    <!-- FACEBOOK WIDGET -->
-    <div id="fb-root"></div>
-
-    <!-- /FACEBOOK WIDGET -->
     <div class="global-wrap">
-        <header id="main-header">
-  
-        </header>
-
-        <div class="container">
-            <h1 class="page-title">Money transfered</h1>
-        </div>
-{{ AccNo }}
-
-        <div class="container">
-            <div class="row" data-gutter="60">
-                <div class="col-md-4">
-                    <h3>Welcome {{ username.userAccName }}.</h3>
-                    <p>We are a public SME banking operator and ground handler. Our advantage is being small enough to treat every small client as an individual and not just the statistics.</p>
-                    <p>Our packages are planned to suit clients looking for a comfortable standard of saving and withdrawals together with an informative guide coupled with an impressive track record.</p>
-                </div>
-                
-
-
-                <div class="col-md-4">
-                    <h3>Transfer Money :::: </h3>
-
-
-
-</div>
-
-<div class="col-md-4">
-<h3> User  Details</h3>
-    <div class="form-group form-group-icon-left">
-        <h4>Account Name</h4>
-  <p>{{ recn }}</p>
-    </div>
-
-	    <div class="form-group form-group-icon-left">
-        <h4>Account Number</h4>
-  <p>  {{ username.userAccNo }}</p>
-    </div>
-	
-	    <div class="form-group form-group-icon-left">
-        <h4>Account Balance</h4>
-  <p>{{ username.userAccBal }}</p>
-    </div>
-	
-	    <div class="form-group form-group-icon-left">
-        <h4>Date </h4>
-  <p>Wanaiume Self Help Group</p>
-    </div>
-	
-                </div>
-				
-				
-            </div>
-        </div>
-
 
 
         <div class="gap"></div>
- 
-        <script src="../..{% static "/js/bootstrap.js" %}"></script>
-        <script src="../..{% static "/js/slimmenu.js" %}"></script>
-        <script src="../..{% static "/js/bootstrap-datepicker.js" %}"></script>
-        <script src="../..{% static "/js/bootstrap-timepicker.js" %}"></script>
-        <script src="../..{% static "/js/nicescroll.js" %}"></script>
 
-        <script src="../..{% static "/js/owl-carousel.js" %}"></script>
-        <script src="../..{% static "/js/fitvids.js" %}"></script>
-        <script src="../..{% static "/js/tweet.js" %}"></script>
-        <script src="../..{% static "/js/countdown.js" %}"></script>
-        <script src="../..{% static "/js/gridrotator.js" %}"></script>
-        <script src="../..{% static "/js/custom.js" %}"></script>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <i class="fa fa-check round box-icon-large box-icon-center box-icon-success mb30"></i>
+                    <h2 class="text-center">John, your transfer action was successful!</h2>
+                    <h5 class="text-center mb30">Money has been sent to johndoe@gmail.com</h5>
+                    <ul class="order-payment-list list mb30">
+                        <li>
+                            <div class="row">
+                                <div class="col-xs-9">
+                                    <h5><i class="fa fa-plane"></i> Flight from London to New York City</h5>
+                                    <p><small>April 24, 2014</small>
+                                    </p>
+                                </div>
+                                <div class="col-xs-3">
+                                    <p class="text-right"><span class="text-lg">$150</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="row">
+                                <div class="col-xs-9">
+                                    <h5><i class="fa fa-plane"></i> Flight from New York City to London</h5>
+                                    <p><small>April 28, 2014</small>
+                                    </p>
+                                </div>
+                                <div class="col-xs-3">
+                                    <p class="text-right"><span class="text-lg">$187</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <h4 class="text-center">You might also need in New York</h4>
+                    <ul class="list list-inline list-center">
+                        <li><a class="btn btn-primary" href="#"><i class="fa fa-building-o"></i> Hotels</a>
+                            <p class="text-center lh1em mt5"><small>398 offers<br /> from $139</small>
+                            </p>
+                        </li>
+                        <li><a class="btn btn-primary" href="#"><i class="fa fa-home"></i> Rentlas</a>
+                            <p class="text-center lh1em mt5"><small>229 offers<br /> from $143</small>
+                            </p>
+                        </li>
+                        <li><a class="btn btn-primary" href="#"><i class="fa fa-dashboard"></i> Cars</a>
+                            <p class="text-center lh1em mt5"><small>180 offers<br /> from $73</small>
+                            </p>
+                        </li>
+                        <li><a class="btn btn-primary" href="#"><i class="fa fa-bolt"></i> Activities</a>
+                            <p class="text-center lh1em mt5"><small>274 offers<br /> from $131</small>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="gap"></div>
+        </div>
+
+
+        <script src="..{% static "/js/bootstrap.js" %}"></script>
+        <script src="..{% static "/js/slimmenu.js" %}"></script>
+        <script src="..{% static "/js/bootstrap-datepicker.js" %}"></script>
+        <script src="..{% static "/js/bootstrap-timepicker.js" %}"></script>
+        <script src="..{% static "/js/nicescroll.js" %}"></script>
+
+        <script src="..{% static "/js/owl-carousel.js" %}"></script>
+        <script src="..{% static "/js/fitvids.js" %}"></script>
+        <script src="..{% static "/js/tweet.js" %}"></script>
+        <script src="..{% static "/js/countdown.js" %}"></script>
+        <script src="..{% static "/js/gridrotator.js" %}"></script>
+        <script src="..{% static "/js/custom.js" %}"></script>
     </div>
 </body>
 
