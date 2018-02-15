@@ -4,7 +4,6 @@
 <head>
     <title>Traveler - Success payment</title>
 
-
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta name="author" content="DarthVader">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,11 +13,11 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600' rel='stylesheet' type='text/css'>
     <!-- /GOOGLE FONTS -->
         {% load static %}
-    <link rel="stylesheet" href="..{% static "/css/bootstrap.css" %}">
-    <link rel="stylesheet" href="..{% static "/css/font-awesome.css" %}">
-    <link rel="stylesheet" href="..{% static "/css/icomoon.css" %}">
-    <link rel="stylesheet" href="..{% static "/css/styles.css" %}">
-            <script src="..{% static "/js/modernizr.js" %}"></script>
+    <link rel="stylesheet" href="../..{% static "/css/bootstrap.css" %}">
+    <link rel="stylesheet" href="../..{% static "/css/font-awesome.css" %}">
+    <link rel="stylesheet" href="../..{% static "/css/icomoon.css" %}">
+    <link rel="stylesheet" href="../..{% static "/css/styles.css" %}">
+            <script src="../..{% static "/js/modernizr.js" %}"></script>
 
 
 </head>
@@ -34,55 +33,52 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <i class="fa fa-check round box-icon-large box-icon-center box-icon-success mb30"></i>
-                    <h2 class="text-center">John, your transfer action was successful!</h2>
-                    <h5 class="text-center mb30">Money has been sent to johndoe@gmail.com</h5>
-                    <ul class="order-payment-list list mb30">
-                        <li>
+<i class="fa fa-check round box-icon-large box-icon-center box-icon-success mb30"></i>
+<h2 class="text-center">{{ request.session.sender_uname }}, your transfer action was successful!</h2>
+<h5 class="text-center mb30">Money has been sent to {{ request.session.recpt_uname }}</h5>
+<ul class="order-payment-list list mb30">
+    <li>
+        <div class="row">
+            <div class="col-xs-9">
+                <h5><i class="fa fa-plane"></i> You have transfered money to {{ request.session.recpt_uname }}</h5>
+                <p><small>April 24, 2014</small>
+                </p>
+            </div>
+            <div class="col-xs-3">
+                <p class="text-right"><span class="text-lg">Ksh. {{ request.session.amnt_sent }}</span>
+                </p>
+            </div>
+        </div>
+    </li>
+    <li>
                             <div class="row">
                                 <div class="col-xs-9">
-                                    <h5><i class="fa fa-plane"></i> Flight from London to New York City</h5>
-                                    <p><small>April 24, 2014</small>
-                                    </p>
-                                </div>
-                                <div class="col-xs-3">
-                                    <p class="text-right"><span class="text-lg">$150</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="row">
-                                <div class="col-xs-9">
-                                    <h5><i class="fa fa-plane"></i> Flight from New York City to London</h5>
+                                    <h5><i class="fa fa-plane"></i> Available balance is the account number {{ request.session.sender_acc_no}} </h5>
                                     <p><small>April 28, 2014</small>
                                     </p>
                                 </div>
                                 <div class="col-xs-3">
-                                    <p class="text-right"><span class="text-lg">$187</span>
+                                    <p class="text-right"><span class="text-lg">Ksh. {{ request.session.sender_amnt_bal }}</span>
                                     </p>
                                 </div>
                             </div>
                         </li>
                     </ul>
-                    <h4 class="text-center">You might also need in New York</h4>
+                    <h4 class="text-center">You might be interested in viewing our Security measures</h4>
                     <ul class="list list-inline list-center">
-                        <li><a class="btn btn-primary" href="#"><i class="fa fa-building-o"></i> Hotels</a>
-                            <p class="text-center lh1em mt5"><small>398 offers<br /> from $139</small>
+                        <li><a class="btn btn-primary" href= "#"><i class="fa fa-building-o"></i> Https Protocol</a>
+                            <p class="text-center lh1em mt5"><small><br /> </small>
                             </p>
                         </li>
-                        <li><a class="btn btn-primary" href="#"><i class="fa fa-home"></i> Rentlas</a>
-                            <p class="text-center lh1em mt5"><small>229 offers<br /> from $143</small>
+                        <li><a class="btn btn-primary" href="#"><i class="fa fa-home"></i> Third party authentication </a>
+                            <p class="text-center lh1em mt5"><small><br /> </small>
                             </p>
                         </li>
-                        <li><a class="btn btn-primary" href="#"><i class="fa fa-dashboard"></i> Cars</a>
-                            <p class="text-center lh1em mt5"><small>180 offers<br /> from $73</small>
+                        <li><a class="btn btn-primary" href="#"><i class="fa fa-dashboard"></i> CSRF Detection mechanism</a>
+                            <p class="text-center lh1em mt5"><small><br /></small>
                             </p>
                         </li>
-                        <li><a class="btn btn-primary" href="#"><i class="fa fa-bolt"></i> Activities</a>
-                            <p class="text-center lh1em mt5"><small>274 offers<br /> from $131</small>
-                            </p>
-                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -90,18 +86,18 @@
         </div>
 
 
-        <script src="..{% static "/js/bootstrap.js" %}"></script>
-        <script src="..{% static "/js/slimmenu.js" %}"></script>
-        <script src="..{% static "/js/bootstrap-datepicker.js" %}"></script>
-        <script src="..{% static "/js/bootstrap-timepicker.js" %}"></script>
-        <script src="..{% static "/js/nicescroll.js" %}"></script>
+        <script src="../..{% static "/js/bootstrap.js" %}"></script>
+        <script src="../..{% static "/js/slimmenu.js" %}"></script>
+        <script src="../..{% static "/js/bootstrap-datepicker.js" %}"></script>
+        <script src="../..{% static "/js/bootstrap-timepicker.js" %}"></script>
+        <script src="../..{% static "/js/nicescroll.js" %}"></script>
 
-        <script src="..{% static "/js/owl-carousel.js" %}"></script>
-        <script src="..{% static "/js/fitvids.js" %}"></script>
-        <script src="..{% static "/js/tweet.js" %}"></script>
-        <script src="..{% static "/js/countdown.js" %}"></script>
-        <script src="..{% static "/js/gridrotator.js" %}"></script>
-        <script src="..{% static "/js/custom.js" %}"></script>
+        <script src="../..{% static "/js/owl-carousel.js" %}"></script>
+        <script src="../..{% static "/js/fitvids.js" %}"></script>
+        <script src="../..{% static "/js/tweet.js" %}"></script>
+        <script src="../..{% static "/js/countdown.js" %}"></script>
+        <script src="../..{% static "/js/gridrotator.js" %}"></script>
+        <script src="../..{% static "/js/custom.js" %}"></script>
     </div>
 </body>
 

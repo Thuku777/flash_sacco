@@ -11,7 +11,10 @@ from django.urls import reverse
 from .transfer_form import TransferForm
 from django.views.generic.base import TemplateView
 
+import django.contrib.sessions.backends.signed_cookies
+
 # Create your views here.
+
 
 
 class ConfirmRedirect(TemplateView):
@@ -85,8 +88,13 @@ def formHandler(request, username):
                     Savings.objects.filter( userAccNo__exact=AccNo ).update(userAccBal=AccBal)
                     Savings.objects.filter( userAccNo__exact=recptAccNo ).update( userAccBal=receptAccBal )
                     message='success'
-                    #return HttpResponseRedirect('index.html',{'message':message})
-                    # return HttpResponseRedirect(render(request, 'transfer/confirm/index.html', {'message':message}))
+                    request.session['recpt_uname'] = recptobj.userAccName
+                    request.session['sender_uname'] = DBobj.userAccName
+                    request.session['sender_amnt_bal'] = AccBal
+                    request.session['recpt_amnt_bal'] = receptAccBal
+                    request.session['amnt_sent']=AccAmount
+                    request.session['sender_acc_no']=AccNo
+
                     return HttpResponseRedirect( reverse( 'transfer:confirm',), {'username':DBobj} )
 
     # if a GET (or any other method) we'll create a blank form
