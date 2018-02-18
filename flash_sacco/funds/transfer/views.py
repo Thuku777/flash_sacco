@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 from django.db.migrations import questioner
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect,request
 from .models import Transfer, Savings
 from django.template import loader
 from django.urls import reverse
@@ -23,6 +23,7 @@ class ConfirmRedirect(TemplateView):
     def get_context_data(self, **kwargs):
         context=super(ConfirmRedirect, self).get_context_data(**kwargs)
         context["username"]="This is a useless page"
+        request.session['aas']='assaas'
         return context
 
 
@@ -50,6 +51,7 @@ def index(request):
     #return HttpResponseRedirect( reverse( 'transfer:confirm' ) )
     return render(request, 'transfer/index.html', context)
    # return HttpResponseRedirect('/transfer/confirm/index.html', {'username', username})
+
 
 
 def formHandler(request, username):
