@@ -53,7 +53,7 @@
                             </li>
                             <li><a href="{% url 'user:members'%}"><i class="fa fa-cog"></i>Group Account Members</a>
                             </li>
-                            <li><a href="{% url 'user:loans' %}"><i class="fa fa-money"></i>Loan Applications</a>
+                            <li><a href="{% url 'user:loans'%}"><i class="fa fa-money"></i>Loan Applications</a>
                             </li>
                             <li><a href="{% url 'user:history'%}"><i class="fa fa-clock-o"></i>Account History</a>
                             </li>
@@ -64,7 +64,27 @@
                 </div>
                 <div class="col-md-9">
 
+                        <div class="col-md-5">
+                            <h4>Apply for a loan</h4>
 
+<form method="post"  enctype="multipart/form-data">
+
+                         {% csrf_token %}
+                        {% for field in form %}
+    <div class="form-group form-group-icon-left"><i class="fa fa-user input-icon input-icon-show"></i>
+    {{ field.label }}
+    {{ field.as_widget }}
+    </div>
+{% endfor %}
+
+<hr>
+<input class="btn btn-primary" type="submit" value="Send Application">
+</form>
+                        </div>
+                    <div class="col-md-4">
+                        <h4>Loan Details</h4>
+
+                        </div>
 
 
                 </div>

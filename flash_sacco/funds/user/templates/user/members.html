@@ -1,0 +1,157 @@
+
+
+
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>User Account</title>
+
+
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta name="keywords" content="html, Msafiri" />
+    <meta name="author" content="msafiri">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- GOOGLE FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600' rel='stylesheet' type='text/css'>
+    <!-- /GOOGLE FONTS -->
+    {% load static %}
+    <link rel="stylesheet" href="../..{% static "/css/bootstrap.css" %}">
+    <link rel="stylesheet" href="../..{% static "/css/font-awesome.css" %}">
+    <link rel="stylesheet" href="../..{% static "/css/icomoon.css" %}">
+    <link rel="stylesheet" href="../..{% static "/css/styles.css" %}">
+
+</head>
+
+<body>
+
+    <div class="global-wrap">
+        <header id="main-header">
+
+        </header>
+
+        <div class="container">
+            <h1 class="page-title">User Profile</h1>
+        </div>
+
+
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <aside class="user-profile-sidebar">
+                        <div class="user-profile-avatar text-center">
+                            {% load static %}
+                            <img src="../..{% static "/img/300x300.png" %}" alt="Image Alternative text" title="AMaze" />
+                            <h5>Wanaume Self-Help Group</h5>
+                            <p>Member Sissssssnce May 2017</p>
+                        </div>
+                        <ul class="list user-profile-nav">
+                            <li><a href="{% url 'user:index'%}"><i class="fa fa-user"></i>Overview</a>
+                            </li>
+                            <li><a href="{% url 'user:members'%}"><i class="fa fa-cog"></i>Group Account Members</a>
+                            </li>
+                            <li><a href="{% url 'user:loans'%}"><i class="fa fa-money"></i>Loan Applications</a>
+                            </li>
+                            <li><a href="{% url 'user:history'%}"><i class="fa fa-clock-o"></i>Account History</a>
+                            </li>
+
+
+                        </ul>
+                    </aside>
+                </div>
+
+                <div class="col-md-9">
+
+<div class="row">
+    <h2>Group Account Members</h2>
+</div>
+
+            <div class="row row-wrap" data-gutter="60">
+
+                <div class="col-md-3">
+                    <div class="thumb text-center">
+                        <header class="thumb-header">
+                            {% load static %}
+                            <img class="round" src="../..{% static "/img/300x300.png" %}" alt="Image Alternative text" title="Afro" />
+                        </header>
+                        <div class="thumb-caption">
+                            <h5 class="thumb-title">Oliver Ross</h5>
+                            <p class="thumb-meta text-small"><b>ID Number</b>31310154</p>
+                            <p class="thumb-meta text-small"><b>Phone Number</b>31310154</p>
+                            <p class="thumb-meta text-small"><b>Email</b>oliver@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-md-3">
+                    <div class="thumb text-center">
+                        <header class="thumb-header">
+                            {% load static %}
+                            <img class="round" src="../..{% static "/img/300x300.png" %}" alt="Image Alternative text" title="Afro" />
+                        </header>
+                        <div class="thumb-caption">
+                            <h5 class="thumb-title">Oliver Ross</h5>
+                            <p class="thumb-meta text-small"><b>ID Number</b>31310154</p>
+                            <p class="thumb-meta text-small"><b>Phone Number</b>31310154</p>
+                            <p class="thumb-meta text-small"><b>Email</b>oliver@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-md-3">
+                    <div class="thumb text-center">
+                        <header class="thumb-header">
+                            {% load static %}
+                            <img class="round" src="../..{% static "/img/300x300.png" %}" alt="Image Alternative text" title="Afro" />
+                        </header>
+                        <div class="thumb-caption">
+                            <h5 class="thumb-title">Oliver Ross</h5>
+                            <p class="thumb-meta text-small"><b>ID Number</b>31310154</p>
+                            <p class="thumb-meta text-small"><b>Phone Number</b>31310154</p>
+                            <p class="thumb-meta text-small"><b>Email</b>oliver@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-md-3">
+                    <div class="thumb text-center">
+                        <header class="thumb-header">
+                            {% load static %}
+                            <img class="round" src="../..{% static "/img/300x300.png" %}" alt="Image Alternative text" title="Afro" />
+                        </header>
+                        <div class="thumb-caption">
+                            <h5 class="thumb-title">Oliver Ross</h5>
+                            <p class="thumb-meta text-small"><b>ID Number</b>31310154</p>
+                            <p class="thumb-meta text-small"><b>Phone Number</b>31310154</p>
+                            <p class="thumb-meta text-small"><b>Email</b>oliver@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="gap"></div>
+{% load static %}
+        <script src="../..{% static "/js/bootstrap.js" %}"></script>
+        <script src="../..{% static "/js/slimmenu.js" %}"></script>
+        <script src="../..{% static "/js/bootstrap-datepicker.js" %}"></script>
+        <script src="../..{% static "/js/bootstrap-timepicker.js" %}"></script>
+        <script src="../..{% static "/js/nicescroll.js" %}"></script>
+        <script src="../..{% static "/js/owl-carousel.js" %}"></script>
+        <script src="../..{% static "/js/fitvids.js" %}"></script>
+        <script src="../..{% static "/js/tweet.js" %}"></script>
+        <script src="../..{% static "/js/countdown.js" %}"></script>
+        <script src="../..{% static "/js/gridrotator.js" %}"></script>
+        <script src="../..{% static "/js/custom.js" %}"></script>
+    </div>
+</body>
+
+</html>
+
+

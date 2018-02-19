@@ -1,0 +1,149 @@
+
+
+
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>User Account</title>
+
+
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta name="keywords" content="html, Msafiri" />
+    <meta name="author" content="msafiri">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- GOOGLE FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600' rel='stylesheet' type='text/css'>
+    <!-- /GOOGLE FONTS -->
+    {% load static %}
+    <link rel="stylesheet" href="../..{% static "/css/bootstrap.css" %}">
+    <link rel="stylesheet" href="../..{% static "/css/font-awesome.css" %}">
+    <link rel="stylesheet" href="../..{% static "/css/icomoon.css" %}">
+    <link rel="stylesheet" href="../..{% static "/css/styles.css" %}">
+
+</head>
+
+<body>
+
+    <div class="global-wrap">
+        <header id="main-header">
+
+        </header>
+
+        <div class="container">
+            <h1 class="page-title">User Profile</h1>
+        </div>
+
+
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <aside class="user-profile-sidebar">
+                        <div class="user-profile-avatar text-center">
+                            {% load static %}
+                            <img src="../..{% static "/img/300x300.png" %}" alt="Image Alternative text" title="AMaze" />
+                            <h5>Wanaume Self-Help Group</h5>
+                            <p>Member Since May 2017</p>
+                        </div>
+                        <ul class="list user-profile-nav">
+                            <li><a href="{% url 'user:index' %}"><i class="fa fa-user"></i>Overview</a>
+                            </li>
+                            <li><a href="{% url 'user:members'%}"><i class="fa fa-cog"></i>Group Account Members</a>
+                            </li>
+                            <li><a href="{% url 'user:loans'%}"><i class="fa fa-money"></i>Loan Applications</a>
+                            </li>
+                            <li><a href="{% url 'user:history'%}"><i class="fa fa-clock-o"></i>Account History</a>
+                            </li>
+
+
+                        </ul>
+                    </aside>
+                </div>
+
+
+                                <div class="col-md-9">
+
+                    <table class="table table-bordered table-striped table-booking-history">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Title</th>
+                                <th>Branch</th>
+                                <th>Date</th>
+                                <th>Action Type </th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Cancel</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="booking-history-type"><i class="fa fa-plane"></i><small>flight</small>
+                                </td>
+                                <td class="booking-history-title">London to New York City</td>
+                                <td>New york City</td>
+                                <td>4/12/2014</td>
+                                <td>4/25/2014</td>
+                                <td>$350</td>
+                                <td class="text-center"><i class="fa fa-check"></i>
+                                </td>
+                                <td class="text-center"><a class="btn btn-default btn-sm" href="#">Cancel</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="booking-history-type"><i class="fa fa-building-o"></i><small>hotel</small>
+                                </td>
+                                <td class="booking-history-title">InterContinental New York Barclay</td>
+                                <td>New york City</td>
+                                <td>4/12/2014</td>
+                                <td>4/25/2014 <i class="fa fa-long-arrow-right"></i> 4/30/2014</td>
+                                <td>$1200</td>
+                                <td class="text-center"><i class="fa fa-check"></i>
+                                </td>
+                                <td class="text-center"><a class="btn btn-default btn-sm" href="#">Cancel</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="booking-history-type"><i class="fa fa-dashboard"></i><small>car</small>
+                                </td>
+                                <td class="booking-history-title">Maserati GranTurismo</td>
+                                <td>New york City</td>
+                                <td>4/12/2014</td>
+                                <td>4/25/2014 <i class="fa fa-long-arrow-right"></i> 4/30/2014</td>
+                                <td>$500</td>
+                                <td class="text-center"><i class="fa fa-check"></i>
+                                </td>
+                                <td class="text-center"><a class="btn btn-default btn-sm" href="#">Cancel</a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="gap"></div>
+{% load static %}
+        <script src="../..{% static "/js/bootstrap.js" %}"></script>
+        <script src="../..{% static "/js/slimmenu.js" %}"></script>
+        <script src="../..{% static "/js/bootstrap-datepicker.js" %}"></script>
+        <script src="../..{% static "/js/bootstrap-timepicker.js" %}"></script>
+        <script src="../..{% static "/js/nicescroll.js" %}"></script>
+        <script src="../..{% static "/js/owl-carousel.js" %}"></script>
+        <script src="../..{% static "/js/fitvids.js" %}"></script>
+        <script src="../..{% static "/js/tweet.js" %}"></script>
+        <script src="../..{% static "/js/countdown.js" %}"></script>
+        <script src="../..{% static "/js/gridrotator.js" %}"></script>
+        <script src="../..{% static "/js/custom.js" %}"></script>
+    </div>
+</body>
+
+</html>
+
+

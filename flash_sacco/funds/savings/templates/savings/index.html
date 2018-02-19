@@ -39,7 +39,7 @@
         <div class="container">
             <div class="row" data-gutter="60">
                 <div class="col-md-4">
-                    <h3>Welcome {{ username.userAccName }}.</h3>
+                    <h3>Welcome.</h3>
                     <p>We are a public SME banking operator and ground handler. Our advantage is being small enough to treat every small client as an individual and not just the statistics.</p>
                     <p>Our packages are planned to suit clients looking for a comfortable standard of saving and withdrawals together with an informative guide coupled with an impressive track record.</p>
                 </div>
@@ -47,7 +47,7 @@
 
 
                 <div class="col-md-4">
-                    <h3>Savings Details </h3>
+                    <h3>Savings Details{{ username }} </h3>
 
 
 </div>
@@ -56,23 +56,20 @@
 <h3> User  Details</h3>
     <div class="form-group form-group-icon-left">
         <h4>Account Name</h4>
-  <p>{{ recn }}</p>
+  <p>{{ request.session.username }}</p>
     </div>
 
 	    <div class="form-group form-group-icon-left">
         <h4>Account Number</h4>
-  <p>  {{ username.userAccNo }}</p>
+  <p>  {{ request.session.userAccNo }}</p>
     </div>
 
 	    <div class="form-group form-group-icon-left">
         <h4>Account Balance</h4>
-  <p>{{ username.userAccBal }}</p>
+  <p>{{ request.session.userbal }}</p>
     </div>
 
-	    <div class="form-group form-group-icon-left">
-        <h4>Date </h4>
-  <p>Wanaiume Self Help Group</p>
-    </div>
+
 
                 </div>
 
@@ -83,13 +80,12 @@
 
 
         <div class="gap"></div>
-
+{% load static %}
         <script src="..{% static "/js/bootstrap.js" %}"></script>
         <script src="..{% static "/js/slimmenu.js" %}"></script>
         <script src="..{% static "/js/bootstrap-datepicker.js" %}"></script>
         <script src="..{% static "/js/bootstrap-timepicker.js" %}"></script>
         <script src="..{% static "/js/nicescroll.js" %}"></script>
-
         <script src="..{% static "/js/owl-carousel.js" %}"></script>
         <script src="..{% static "/js/fitvids.js" %}"></script>
         <script src="..{% static "/js/tweet.js" %}"></script>
