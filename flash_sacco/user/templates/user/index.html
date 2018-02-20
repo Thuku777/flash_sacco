@@ -5,7 +5,7 @@
 <html>
 
 <head>
-    <title>Savings</title>
+    <title>User Account</title>
 
 
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
@@ -32,60 +32,54 @@
         </header>
 
         <div class="container">
-            <h1 class="page-title">Savings Details </h1>
+            <h1 class="page-title">User Profile</h1>
         </div>
-{{ AccNo }}
+
+
+
 
         <div class="container">
-            <div class="row" data-gutter="60">
-                <div class="col-md-4">
-                    <h3>Welcome.</h3>
-                    <p>We are a public SME banking operator and ground handler. Our advantage is being small enough to treat every small client as an individual and not just the statistics.</p>
-                    <p>Our packages are planned to suit clients looking for a comfortable standard of saving and withdrawals together with an informative guide coupled with an impressive track record.</p>
+            <div class="row">
+                <div class="col-md-3">
+                    <aside class="user-profile-sidebar">
+                        <div class="user-profile-avatar text-center">
+                            <img src="..{% static "/img/300x300.png" %}" alt="Image Alternative text" title="AMaze" />
+                            <h5>Wanaume Self-Help Group</h5>
+                            <p>Member Since May 2017</p>
+                        </div>
+                        <ul class="list user-profile-nav">
+                            <li><a href="user-profile.html"><i class="fa fa-user"></i>Overview</a>
+                            </li>
+                            <li><a href="user-profile-settings.html"><i class="fa fa-cog"></i>Group Account Members</a>
+                            </li>
+                            <li><a href="user-profile-photos.html"><i class="fa fa-money"></i>Loan Applications</a>
+                            </li>
+                            <li><a href="user-profile-booking-history.html"><i class="fa fa-clock-o"></i>Account History</a>
+                            </li>
+                            <li><a href="user-profile-cards.html"><i class="fa fa-credit-card"></i>Credit/Debit Cards</a>
+                            </li>
+                            <li><a href="user-profile-wishlist.html"><i class="fa fa-heart-o"></i>Others</a>
+                            </li>
+                        </ul>
+                    </aside>
                 </div>
+                <div class="col-md-9">
 
-
-
-                <div class="col-md-4">
-                    <h3>Savings Details{{ username }} </h3>
-
-
-</div>
-
-<div class="col-md-4">
-<h3> User  Details</h3>
-    <div class="form-group form-group-icon-left">
-        <h4>Account Name</h4>
-  <p>{{ request.session.username }}</p>
-    </div>
-
-	    <div class="form-group form-group-icon-left">
-        <h4>Account Number</h4>
-  <p>  {{ request.session.userAccNo }}</p>
-    </div>
-
-	    <div class="form-group form-group-icon-left">
-        <h4>Account Balance</h4>
-  <p>{{ request.session.userbal }}</p>
-    </div>
-
-
+                    
 
                 </div>
-
-
             </div>
         </div>
 
 
-
         <div class="gap"></div>
-{% load static %}
+
         <script src="..{% static "/js/bootstrap.js" %}"></script>
         <script src="..{% static "/js/slimmenu.js" %}"></script>
         <script src="..{% static "/js/bootstrap-datepicker.js" %}"></script>
         <script src="..{% static "/js/bootstrap-timepicker.js" %}"></script>
         <script src="..{% static "/js/nicescroll.js" %}"></script>
+
         <script src="..{% static "/js/owl-carousel.js" %}"></script>
         <script src="..{% static "/js/fitvids.js" %}"></script>
         <script src="..{% static "/js/tweet.js" %}"></script>

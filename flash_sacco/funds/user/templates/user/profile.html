@@ -1,0 +1,93 @@
+
+
+
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>User Account</title>
+
+
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta name="keywords" content="html, Msafiri" />
+    <meta name="author" content="msafiri">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- GOOGLE FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600' rel='stylesheet' type='text/css'>
+    <!-- /GOOGLE FONTS -->
+    {% load static %}
+    <link rel="stylesheet" href="../..{% static "/css/bootstrap.css" %}">
+    <link rel="stylesheet" href="../..{% static "/css/font-awesome.css" %}">
+    <link rel="stylesheet" href="../..{% static "/css/icomoon.css" %}">
+    <link rel="stylesheet" href="../..{% static "/css/styles.css" %}">
+
+</head>
+
+<body>
+
+    <div class="global-wrap">
+        <header id="main-header">
+
+        </header>
+
+        <div class="container">
+            <h1 class="page-title">User Profile</h1>
+        </div>
+
+
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <aside class="user-profile-sidebar">
+                        <div class="user-profile-avatar text-center">
+                            {% load static %}
+                            <img src="../..{% static "/img/300x300.png" %}" alt="Image Alternative text" title="AMaze" />
+                            <h5>Wanaume Self-Help Group</h5>
+                            <p>Member Since May 2017</p>
+                        </div>
+                                   <ul class="list user-profile-nav">
+                            <li><a href="{% url 'user:index' %}"><i class="fa fa-user"></i>Overview</a>
+                            </li>
+                            <li><a href="{% url 'user:members'%}"><i class="fa fa-cog"></i>Group Account Members</a>
+                            </li>
+                            <li><a href="{% url 'user:loans' %}"><i class="fa fa-money"></i>Loan Applications</a>
+                            </li>
+                            <li><a href="{% url 'user:history'%}"><i class="fa fa-clock-o"></i>Account History</a>
+                            </li>
+
+
+                        </ul>
+                    </aside>
+                </div>
+                <div class="col-md-9">
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="gap"></div>
+{% load static %}
+        <script src="../..{% static "/js/bootstrap.js" %}"></script>
+        <script src="../..{% static "/js/slimmenu.js" %}"></script>
+        <script src="../..{% static "/js/bootstrap-datepicker.js" %}"></script>
+        <script src="../..{% static "/js/bootstrap-timepicker.js" %}"></script>
+        <script src="../..{% static "/js/nicescroll.js" %}"></script>
+        <script src="../..{% static "/js/owl-carousel.js" %}"></script>
+        <script src="../..{% static "/js/fitvids.js" %}"></script>
+        <script src="../..{% static "/js/tweet.js" %}"></script>
+        <script src="../..{% static "/js/countdown.js" %}"></script>
+        <script src="../..{% static "/js/gridrotator.js" %}"></script>
+        <script src="../..{% static "/js/custom.js" %}"></script>
+    </div>
+</body>
+
+</html>
+
+
