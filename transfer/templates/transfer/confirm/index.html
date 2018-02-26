@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Traveler - Success payment</title>
+    <title>Flash : Successful Transfer</title>
 
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta name="author" content="DarthVader">
@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="../..{% static "/css/font-awesome.css" %}">
     <link rel="stylesheet" href="../..{% static "/css/icomoon.css" %}">
     <link rel="stylesheet" href="../..{% static "/css/styles.css" %}">
-            <script src="../..{% static "/js/modernizr.js" %}"></script>
+    <script src="../..{% static "/js/modernizr.js" %}"></script>
 
 
 </head>
@@ -40,7 +40,7 @@
     <li>
         <div class="row">
             <div class="col-xs-9">
-                <h5><i class="fa fa-plane"></i> You have transfered money to {{ request.session.recpt_uname }}</h5>
+                <h5><i class="fa fa-money"></i> You have transfered money to {{ request.session.recpt_uname }}</h5>
                 <p><small>April 24, 2014</small>
                 </p>
             </div>
@@ -53,7 +53,7 @@
     <li>
                             <div class="row">
                                 <div class="col-xs-9">
-                                    <h5><i class="fa fa-plane"></i> Available balance is the account number {{ request.session.sender_acc_no}} </h5>
+                                    <h5><i class="fa fa-money"></i> Available balance is the account number {{ request.session.sender_acc_no}} </h5>
                                     <p><small>April 28, 2014</small>
                                     </p>
                                 </div>
@@ -85,19 +85,29 @@
             <div class="gap"></div>
         </div>
 
-
+	{% load static %}
         <script src="../..{% static "/js/bootstrap.js" %}"></script>
-        <script src="../..{% static "/js/slimmenu.js" %}"></script>
-        <script src="../..{% static "/js/bootstrap-datepicker.js" %}"></script>
-        <script src="../..{% static "/js/bootstrap-timepicker.js" %}"></script>
-        <script src="../..{% static "/js/nicescroll.js" %}"></script>
+        <script src="../..{% static "/js/jquery.js" %}"></script>
+        <script src="../..{% static "js/bootstrap.js"%}"></script>
+        <script src="../..{% static "js/slimmenu.js"%}"></script>
+        <script src="../..{% static "js/bootstrap-datepicker.js"%}"></script>
+        <script src="../..{% static "js/bootstrap-timepicker.js"%}"></script>
+        <script src="../..{% static "js/nicescroll.js"%}"></script>
+        <script src="../..{% static "js/dropit.js"%}"></script>
+        <script src="../..{% static "js/ionrangeslider.js"%}"></script>
+        <script src="../..{% static "js/icheck.js"%}"></script>
+        <script src="../..{% static "js/fotorama.js"%}"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+        <script src="../..{% static "js/typeahead.js"%}"></script>
+        <script src="../..{% static "js/card-payment.js"%}"></script>
+        <script src="../..{% static "js/magnific.js"%}"></script>
+        <script src="../..{% static "js/owl-carousel.js"%}"></script>
+        <script src="../..{% static "js/fitvids.js"%}"></script>
+        <script src="../..{% static "js/tweet.js"%}"></script>
+        <script src="../..{% static "js/countdown.js"%}"></script>
+        <script src="../..{% static "js/gridrotator.js"%}"></script>
+        <script src="../..{% static "js/custom.js"%}"></script>
 
-        <script src="../..{% static "/js/owl-carousel.js" %}"></script>
-        <script src="../..{% static "/js/fitvids.js" %}"></script>
-        <script src="../..{% static "/js/tweet.js" %}"></script>
-        <script src="../..{% static "/js/countdown.js" %}"></script>
-        <script src="../..{% static "/js/gridrotator.js" %}"></script>
-        <script src="../..{% static "/js/custom.js" %}"></script>
     </div>
 </body>
 
