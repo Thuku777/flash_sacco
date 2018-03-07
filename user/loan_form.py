@@ -16,7 +16,7 @@ from django.forms.widgets import CheckboxSelectMultiple
 from django.forms import ModelMultipleChoiceField,ModelForm
 
 from .models import User, Group
-from savings.models import Savings, Deposits
+#from savings.models import Savings, Deposits
 
 
 class LoanForm (forms.Form ):
@@ -64,9 +64,9 @@ class ProfileUpdateForm(forms.ModelForm):
             fields = ['firstName', 'lastName', 'email', 'contact']
 
 class PinUpdateForm(forms.Form):
-    contact=forms.IntegerField(widget=forms.TextInput(attrs={'class':'form-control', 'required':True, 'autocomplete':'off','placeholder':'Account Pin'}),label='Current Account Pin')
-    contact_cp1=forms.IntegerField(widget=forms.TextInput(attrs={'class':'form-control', 'required':True, 'autocomplete':'off','placeholder':'Account Pin'}),label='Enter Account Pin')
-    contact_cp2=forms.IntegerField(widget=forms.TextInput(attrs={'class':'form-control', 'required':True, 'autocomplete':'off','placeholder':'Account Pin'}),label='New Pin Again')
+    accountPin=forms.IntegerField(widget=forms.TextInput(attrs={'class':'form-control', 'required':True, 'autocomplete':'off','placeholder':'Account Pin'}),label='Current Account Pin')
+    accountPin_cp1=forms.IntegerField(widget=forms.TextInput(attrs={'class':'form-control', 'required':True, 'autocomplete':'off','placeholder':'Account Pin'}),label='Enter Account Pin')
+    accountPin_cp2=forms.IntegerField(widget=forms.TextInput(attrs={'class':'form-control', 'required':True, 'autocomplete':'off','placeholder':'Account Pin'}),label='New Pin Again')
 
 
 class RegisterForm(forms.ModelForm):
@@ -118,11 +118,19 @@ class RegisterForm(forms.ModelForm):
         model = User
         fields = ['firstName', 'lastName', 'IDnumber', 'DateOfBirth', 'contact', 'email', 'address', 'code', 'town',
                   'image','register_date']
+        exclude=['register_date']
 
 
 class RegisterGroupForm(forms.ModelForm):
     class Meta:
         model = Group
         fields = '__all__'
+
+
+
+class SharesForm(forms.Form):
+  num_of_shares=forms.IntegerField(widget=forms.TextInput(attrs={'class':'form-control', 'required':True, 'autocomplete':'off','placeholder':'Account Number' }), label='ASharess')
+  #num_of_shares=forms.IntegerField(widget=forms.TextInput(attrs={'class':'form-control unknown', 'required':True, 'autocomplete':'off','placeholder':'Number of Shares' }), label='Shares')
+
 
 

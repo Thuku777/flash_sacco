@@ -5,11 +5,12 @@ from django.shortcuts import render
 from django.db.migrations import questioner
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect, request
-from .models import Transfer, Savings
+#from savings.models import Savings,Shares
 from django.template import loader
 from django.urls import reverse
-from .transfer_form import TransferForm
+from .transfer_form import TransferForm, SharesForm
 from django.views.generic.base import TemplateView
+#from transfer.models import TransferHistory
 from savings.views import confirmTransfer
 import django.contrib.sessions.backends.signed_cookies
 
@@ -95,6 +96,8 @@ def formHandler(request, username):
 
                 activity="transfered'+AccAmount+' to '+recptAccNo'"
                 a=DBobj.userAccName
+                TransferHistory.objects.filter( userAccNo__exact=1234 ).update( userAccName='Women', userAccNo=1234,
+                accType='personal', groupAccNo=1234,userAccBal=123, amount=122, shares=0,activity='transfer',userAccBankBranch='nyc', activityType='transfer', status='works' )
 
                 ########################################################################
 
@@ -104,7 +107,7 @@ def formHandler(request, username):
                 request.session['recpt_amnt_bal'] = receptAccBal
                 request.session['amnt_sent'] = AccAmount
                 request.session['sender_acc_no'] = AccNo
-
+                message="Mmmmhhh... Transfer was successful"
                 return HttpResponseRedirect( reverse( 'transfer:confirm', ), {'username': DBobj},{'message':message} )
 
     # if a GET (or any other method) we'll create a blank form
@@ -113,3 +116,52 @@ def formHandler(request, username):
         return HttpResponseRedirect( render( request, 'transfer/index.html', {'form': form} ) )
 
 
+def sharesIndex(request):
+    # latest_question_list = Savings.objects.order_by('-pub_date')[:5]
+
+    username = Shares.objects.get( id__exact=1 )
+
+    form = SharesForm()
+    context = {
+        'form': form, 'username': username
+    }
+    # return HttpResponseRedirect( reverse( 'transfer:confirm' ) )
+    return render( request, 'transfer/shares.html', context )
+
+
+
+def sharesHandler(request):
+    if request.method == 'POST':
+        form = SharesForm( request.POST )
+        if form.is_valid():
+            senderAccNo = form.cleaned_data['senderAccNo']
+            recpAccNo = form.cleaned_data['recpAccNo']
+            amount = form.cleaned_data['amount']
+            # redirect to a new URL:
+            try:
+
+                DBobj = get_object_or_404( Shares, userAccNo__exact=senderAccNo )
+                recptobj = get_object_or_404( Shares, userAccNo__exact=recpAccNo )
+
+                AccBal = DBobj.num_of_shares
+                receptAccBal = recptobj.num_of_shares
+
+                request.session['username'] = DBobj.userAccNo
+                request.session['AccBal'] = AccBal
+                request.session['username'] = recptobj.userAccNo
+                request.session['receptAccBal'] = receptAccBal
+
+            except (KeyError, DBobj.DoesNotExist):
+                return HttpResponseRedirect( 'shares.html',
+                                             {'DBobj': DBobj, 'message': "You did not select a fill any field"} )
+            else:
+                message = "Mmmmhhh... Transfer was successful"
+                return HttpResponseRedirect( reverse( 'transfer:confirm', ), {'username': DBobj}, {'message': message} )
+
+        # if a GET (or any other method) we'll create a blank form
+    else:
+        form = SharesForm()
+        ###################################Replace with session
+        username = Shares.objects.get( id__exact=1 )
+        ###################################
+        return HttpResponseRedirect( reverse('transfer:shares', ), {'username': username})

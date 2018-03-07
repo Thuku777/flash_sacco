@@ -15,11 +15,12 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600' rel='stylesheet' type='text/css'>
     <!-- /GOOGLE FONTS -->
-    {% load static %}
-    <link rel="stylesheet" href="..{% static "/css/bootstrap.css" %}">
-    <link rel="stylesheet" href="..{% static "/css/font-awesome.css" %}">
-    <link rel="stylesheet" href="..{% static "/css/icomoon.css" %}">
-    <link rel="stylesheet" href="..{% static "/css/styles.css" %}">
+        {% load static %}
+    <link rel="stylesheet" href="../..{% static "/css/bootstrap.css" %}">
+    <link rel="stylesheet" href="../..{% static "/css/font-awesome.css" %}">
+    <link rel="stylesheet" href="../..{% static "/css/icomoon.css" %}">
+    <link rel="stylesheet" href="../..{% static "/css/styles.css" %}">
+    <script src="../..{% static "/js/modernizr.js" %}"></script>
 
 </head>
 
@@ -31,28 +32,33 @@
         </header>
 
         <div class="container">
-            <h1 class="page-title">Transfer Funds</h1>
+            <h1 class="page-title">Transfer Shares</h1>
         </div>
 
         <div class="container">
             <div class="row" data-gutter="60">
                 <div class="col-md-4">
                     <h3>Welcome {{ username.userAccName }}.</h3>
-                    <p>We are a public SME banking operator and ground handler. Our advantage is being small enough to treat every small client as an individual and not just the statistics.</p>
-                    <p>Our packages are planned to suit clients looking for a comfortable standard of saving and withdrawals together with an informative guide coupled with an impressive track record.</p>
+                    <p><b>shares or equity capital</b>:
+Each member shall purchase at least one share of Ksh.100 each. Shares shall not be refundable or assignable as collateral for a loan,
+but a member may transfer his shares to other members on leaving membership of the Society.
+                    </p>
+                    <p>
+                        Shares may earn dividends paid from net surplus after required transfers to reserves at the end of a financial year
+in accordance with the dividend policy of the Society.
+                    </p>
                 </div>
 
 
 
                 <div class="col-md-4">
-                    <h3>Transfer Money</h3>
+                    <h3>Transfer Shares</h3>
  {% for error in field.errors %}
      <div class="row">
          <div class="alert alert-danger">{{error}}</div>
      </div>
  {% endfor %}
-
-                    <form action="{% url 'transfer:formHandler' username.id%}" method="POST">
+                    <form action="{% url 'transfer:sharesHandler' %}" method="POST">
                          {% csrf_token %}
                         {% for field in form %}
     <div class="form-group form-group-icon-left"><i class="fa fa-user input-icon input-icon-show"></i>
@@ -99,7 +105,7 @@
 
         <div class="gap"></div>
  
-       	{% load static %}
+	{% load static %}
         <script src="../..{% static "/js/bootstrap.js" %}"></script>
         <script src="../..{% static "/js/jquery.js" %}"></script>
         <script src="../..{% static "js/bootstrap.js"%}"></script>

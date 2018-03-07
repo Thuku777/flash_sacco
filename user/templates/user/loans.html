@@ -48,12 +48,14 @@
                             <h5>{{ DBobj.firstName }}</h5>
                             <p>Member Since {{ DBobj.register_date }}</p>
                         </div>
-                     <ul class="list user-profile-nav">
+                    <ul class="list user-profile-nav">
                             <li><a href="{% url 'user:index'%}"><i class="fa fa-user"></i>Overview</a>
                             </li>
-                            <li><a href="{% url 'user:profileupdate'  DBobj.id %}"><i class="fa fa-user"></i>Settings</a>
+                            <li><a href="{% url 'user:profileupdate'  DBobj.id %}"><i class="fa fa-cog"></i>Settings</a>
                             </li>
-                            <li><a href="{% url 'user:members'%}"><i class="fa fa-cog"></i>Group Account</a>
+                         <li><a href="{% url 'user:shares'%}"><i class="fa fa-cog"></i>Shares</a>
+                            </li>
+                            <li><a href="{% url 'user:members'%}"><i class="fa fa-group"></i>Group Account</a>
                             </li>
                             <li><a href="{% url 'user:loans'%}"><i class="fa fa-money"></i>Loan Applications</a>
                             </li>
@@ -68,6 +70,14 @@
 
                         <div class="col-md-5">
                             <h4>Apply for a loan</h4>
+
+
+                         {% for error in field.errors %}
+     <div class="row">
+         <div class="alert alert-danger">{{error}}</div>
+     </div>
+ {% endfor %}
+
 
 <form method="post"  enctype="multipart/form-data">
 

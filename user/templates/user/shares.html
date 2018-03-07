@@ -5,7 +5,8 @@
 <html>
 
 <head>
-    <title>Transfers</title>
+    <title>User Account</title>
+
 
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta name="keywords" content="html, Msafiri" />
@@ -16,10 +17,10 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600' rel='stylesheet' type='text/css'>
     <!-- /GOOGLE FONTS -->
     {% load static %}
-    <link rel="stylesheet" href="..{% static "/css/bootstrap.css" %}">
-    <link rel="stylesheet" href="..{% static "/css/font-awesome.css" %}">
-    <link rel="stylesheet" href="..{% static "/css/icomoon.css" %}">
-    <link rel="stylesheet" href="..{% static "/css/styles.css" %}">
+    <link rel="stylesheet" href="../..{% static "/css/bootstrap.css" %}">
+    <link rel="stylesheet" href="../..{% static "/css/font-awesome.css" %}">
+    <link rel="stylesheet" href="../..{% static "/css/icomoon.css" %}">
+    <link rel="stylesheet" href="../..{% static "/css/styles.css" %}">
 
 </head>
 
@@ -27,32 +28,53 @@
 
     <div class="global-wrap">
         <header id="main-header">
-  
+
         </header>
 
         <div class="container">
-            <h1 class="page-title">Transfer Funds</h1>
+
+            <h1 class="page-title">User Profile</h1>
         </div>
 
         <div class="container">
-            <div class="row" data-gutter="60">
-                <div class="col-md-4">
-                    <h3>Welcome {{ username.userAccName }}.</h3>
-                    <p>We are a public SME banking operator and ground handler. Our advantage is being small enough to treat every small client as an individual and not just the statistics.</p>
-                    <p>Our packages are planned to suit clients looking for a comfortable standard of saving and withdrawals together with an informative guide coupled with an impressive track record.</p>
+            <div class="row">
+                  <div class="col-md-3">
+                    <aside class="user-profile-sidebar">
+                        <div class="user-profile-avatar text-center">
+                            {% load static %}
+                            <img src="{{ DBobj.image.url }}" alt="Image Alternative text" title="AMaze" />
+                            <h5>{{ DBobj.firstName }}</h5>
+                            <p>Member Since {{ DBobj.register_date }}</p>
+                        </div>
+                 <ul class="list user-profile-nav">
+                            <li><a href="{% url 'user:index'%}"><i class="fa fa-user"></i>Overview</a>
+                            </li>
+                            <li><a href="{% url 'user:profileupdate'  DBobj.id %}"><i class="fa fa-cog"></i>Settings</a>
+                            </li>
+                         <li><a href="{% url 'user:shares'%}"><i class="fa fa-cog"></i>Shares</a>
+                            </li>
+                            <li><a href="{% url 'user:members'%}"><i class="fa fa-group"></i>Group Account</a>
+                            </li>
+                            <li><a href="{% url 'user:loans'%}"><i class="fa fa-money"></i>Loan Applications</a>
+                            </li>
+                            <li><a href="{% url 'user:history'%}"><i class="fa fa-clock-o"></i>Account History</a>
+                            </li>
+
+
+                        </ul>
+                    </aside>
                 </div>
+                <div class="col-md-9">
+
+                        <div class="col-md-5">
+                            <h4>Buy Shares</h4>
 
 
+                        {{ message }}
+                     {{ error }}{{ sharesobj.num_of_shares }}{{ shares.num_of_shares }}
 
-                <div class="col-md-4">
-                    <h3>Transfer Money</h3>
- {% for error in field.errors %}
-     <div class="row">
-         <div class="alert alert-danger">{{error}}</div>
-     </div>
- {% endfor %}
+<form method="post" action="{% url 'user:shares' %}" enctype="multipart/form-data">
 
-                    <form action="{% url 'transfer:formHandler' username.id%}" method="POST">
                          {% csrf_token %}
                         {% for field in form %}
     <div class="form-group form-group-icon-left"><i class="fa fa-user input-icon input-icon-show"></i>
@@ -60,46 +82,28 @@
     {{ field.as_widget }}
     </div>
 {% endfor %}
-<div class="checkbox">
-<label>
-    <input name="remember" autocomplete="off" type="checkbox">Confirm  Transaction!</label>
-</div>
-      <input type="hidden" name="subinput" value="1">
-    <input class="btn btn-primary" required autocomplete="off" type="submit" value="Send" />
+
+<hr>
+<input class="btn btn-primary" type="submit" value="Send Request">
 </form>
-</div>
+                        </div>
+                    <div class="col-md-4">
+                        <h4>My Shares</h4>
+                                 <div class="form-group">
+                                      <h5>Current Stock Markets</h5>
 
-<div class="col-md-4">
-<h3> Account Status</h3>
-    <div class="form-group form-group-icon-left">
-        <label> Current Balance</label>
-  <p>Ksh. {{ username.userAccBal }}</p>
-    </div>
+                                 </div>
+                        </div>
 
-	    <div class="form-group form-group-icon-left">
-        <label> Account Type</label>
-  <p>  {{ username.userAccNo }}</p>
-    </div>
-
-	    <div class="form-group form-group-icon-left">
-        <label>Number of Shares</label>
-  <p>{{ username.userAccBal }}</p>
-    </div>
-
-	    <div class="form-group form-group-icon-left">
-        <label>Current Stock Value </label>
-  <p>One stock share is trading at Ksh 59.34</p>
-    </div>
 
                 </div>
-				
-				
             </div>
         </div>
 
+
         <div class="gap"></div>
- 
-       	{% load static %}
+
+		{% load static %}
         <script src="../..{% static "/js/bootstrap.js" %}"></script>
         <script src="../..{% static "/js/jquery.js" %}"></script>
         <script src="../..{% static "js/bootstrap.js"%}"></script>
@@ -121,7 +125,6 @@
         <script src="../..{% static "js/countdown.js"%}"></script>
         <script src="../..{% static "js/gridrotator.js"%}"></script>
         <script src="../..{% static "js/custom.js"%}"></script>
-
     </div>
 </body>
 
