@@ -32,7 +32,7 @@
         </header>
 
         <div class="container">
-            <h1 class="page-title">User Profile</h1>
+            <h1 class="page-title">User Phjkl;';lkjhgfdfhjkrofile</h1>
         </div>
 
 
@@ -48,12 +48,14 @@
                             <h5>{{ DBobj.firstName }}</h5>
                             <p>Member Since {{ DBobj.register_date }}</p>
                         </div>
-                     <ul class="list user-profile-nav">
+                   <ul class="list user-profile-nav">
                             <li><a href="{% url 'user:index'%}"><i class="fa fa-user"></i>Overview</a>
                             </li>
-                            <li><a href="{% url 'user:profileupdate'  DBobj.id %}"><i class="fa fa-user"></i>Settings</a>
+                            <li><a href="{% url 'user:profileupdate'  DBobj.id %}"><i class="fa fa-cog"></i>Settings</a>
                             </li>
-                            <li><a href="{% url 'user:members'%}"><i class="fa fa-cog"></i>Group Account</a>
+                         <li><a href="{% url 'user:shares'%}"><i class="fa fa-cog"></i>Shares</a>
+                            </li>
+                            <li><a href="{% url 'user:members'%}"><i class="fa fa-group"></i>Group Account</a>
                             </li>
                             <li><a href="{% url 'user:loans'%}"><i class="fa fa-money"></i>Loan Applications</a>
                             </li>

@@ -1,10 +1,10 @@
 from django.db import models
 from user.models import User
 
-
 # Create your models here.
 
-class Savings( models.Model ):
+
+class Savings(models.Model):
     userID = models.ForeignKey( User, on_delete=models.CASCADE )
     userAccName = models.CharField( max_length=20 )
     userAccNo = models.IntegerField()
@@ -20,27 +20,27 @@ class Savings( models.Model ):
         choices=savings_choices,
     )
 
+    def getshares(self):
+        return self.shares_set.all()
+
+
     def __str__(self):
         return self.userAccName
 
 
-class Shares( models.Model ):
-    savingsID = models.ForeignKey( Savings, on_delete=models.CASCADE )
-    userID = models.ForeignKey( User, on_delete=models.CASCADE )
+class Shares(models.Model):
+    savingsID = models.ForeignKey(Savings, on_delete=models.CASCADE )
     num_of_shares = models.IntegerField()
 
 
 class Deposits( models.Model ):
     savingsID = models.ForeignKey( Savings, on_delete=models.CASCADE )
-    userID = models.ForeignKey( User, on_delete=models.CASCADE )
-
     num_of_shares = models.IntegerField()
     balance = models.IntegerField()
 
 
 class WithdrawalDeposits( models.Model ):
     savingsID = models.ForeignKey( Savings, on_delete=models.CASCADE )
-    userID = models.ForeignKey( User, on_delete=models.CASCADE )
     balance = models.IntegerField()
     silver = 'silver'
     gold = 'gold'
@@ -53,13 +53,11 @@ class WithdrawalDeposits( models.Model ):
 
 
 class Loans( models.Model ):
-    savingsID = models.ForeignKey( Savings, on_delete=models.CASCADE )
-    userID = models.ForeignKey( User, on_delete=models.CASCADE )
+    savingsID = models.ForeignKey(Savings, on_delete=models.CASCADE)
     amount = models.IntegerField()
     deadline = models.DurationField()
     interest = models.FloatField()
     loanDate = models.DateField()
-
     normal = 'normal'
     emergency = 'emergency'
     fees = 'fees'
