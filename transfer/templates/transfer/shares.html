@@ -28,7 +28,7 @@
 
     <div class="global-wrap">
         <header id="main-header">
-  
+
         </header>
 
         <div class="container">
@@ -38,8 +38,8 @@
         <div class="container">
             <div class="row" data-gutter="60">
                 <div class="col-md-4">
-                    <h3>Welcome {{ username.userAccName }}.</h3>
-                    <p><b>shares or equity capital</b>:
+                    <h3>Welcome {{ senderobj.firstName }}.</h3>
+                    <p><b>Shares or Equity Capital</b>:
 Each member shall purchase at least one share of Ksh.100 each. Shares shall not be refundable or assignable as collateral for a loan,
 but a member may transfer his shares to other members on leaving membership of the Society.
                     </p>
@@ -51,60 +51,39 @@ in accordance with the dividend policy of the Society.
 
 
 
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <h3>Transfer Shares</h3>
- {% for error in field.errors %}
+ {% if error %}
      <div class="row">
-         <div class="alert alert-danger">{{error}}</div>
+         <div class="alert alert-danger">
+                                <button class="close" type="button" data-dismiss="alert"><span aria-hidden="true">×</span>
+                                </button>
+                                <p class="text-small">{{ error }}</p>
+                            </div>
      </div>
- {% endfor %}
+ {% endif %}
                     <form action="{% url 'transfer:sharesHandler' %}" method="POST">
                          {% csrf_token %}
                         {% for field in form %}
-    <div class="form-group form-group-icon-left"><i class="fa fa-user input-icon input-icon-show"></i>
-    {{ field.label }}
+    <div class="form-group form-group-icon-left"><i class="fa fa-rocket input-icon input-icon-highlight"></i>
+    <label>{{ field.label }}</label>
     {{ field.as_widget }}
     </div>
 {% endfor %}
-<div class="checkbox">
-<label>
-    <input name="remember" autocomplete="off" type="checkbox">Confirm  Transaction!</label>
-</div>
+
       <input type="hidden" name="subinput" value="1">
-    <input class="btn btn-primary" required autocomplete="off" type="submit" value="Send" />
+    <input class="btn btn-primary" required autocomplete="off" type="submit" value="Transfer Shares" />
 </form>
 </div>
+            <div class="col-md-2"></div>
 
-<div class="col-md-4">
-<h3> Account Status</h3>
-    <div class="form-group form-group-icon-left">
-        <label> Current Balance</label>
-  <p>Ksh. {{ username.userAccBal }}</p>
-    </div>
 
-	    <div class="form-group form-group-icon-left">
-        <label> Account Type</label>
-  <p>  {{ username.userAccNo }}</p>
-    </div>
 
-	    <div class="form-group form-group-icon-left">
-        <label>Number of Shares</label>
-  <p>{{ username.userAccBal }}</p>
-    </div>
-
-	    <div class="form-group form-group-icon-left">
-        <label>Current Stock Value </label>
-  <p>One stock share is trading at Ksh 59.34</p>
-    </div>
-
-                </div>
-				
-				
             </div>
         </div>
 
         <div class="gap"></div>
- 
+
 	{% load static %}
         <script src="../..{% static "/js/bootstrap.js" %}"></script>
         <script src="../..{% static "/js/jquery.js" %}"></script>

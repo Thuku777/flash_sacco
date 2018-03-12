@@ -27,9 +27,59 @@
 <body>
 
     <div class="global-wrap">
-        <header id="main-header">
+           <header id="main-header">
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
 
-        </header>
+            <nav class="navbar ">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle " data-target="#myNavBar" data-toggle="collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand hidden-sm" href="#">Flash</a>
+                    </div>
+                    <div class="navbar-collapse collapse" id="myNavBar">
+                        <ul class="nav navbar-nav">
+                            <li><a href="{% url 'index' %} }}" class="active">Home</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Accounts<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Register</a></li>
+                                    <li><a href="#">Login</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="{% url 'transfer:formHandler' %}">Profile</a></li>
+
+                            <li><a href="#">Education</a></li>
+                            <li><a href="#">Partners</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Staff<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Login</a></li>
+                                    <li><a href="#">Register</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+                         </div>
+            </div>
+        </div>  <!-- //End container -->
+
+
+             </header>
+
+
 
         <div class="container">
 
@@ -51,7 +101,7 @@
                             </li>
                             <li><a href="{% url 'user:profileupdate'  DBobj.id %}"><i class="fa fa-cog"></i>Settings</a>
                             </li>
-                         <li><a href="{% url 'user:shares'%}"><i class="fa fa-cog"></i>Shares</a>
+                         <li><a href="{% url 'user:shares'%}"><i class="fa fa-life-ring"></i>Shares</a>
                             </li>
                             <li><a href="{% url 'user:members'%}"><i class="fa fa-group"></i>Group Account</a>
                             </li>
@@ -65,34 +115,62 @@
                     </aside>
                 </div>
                 <div class="col-md-9">
-
+<div class="row">
+    <h4>Welcome {{ DBobj.firstName }} </h4>
+</div>
                         <div class="col-md-5">
-                            <h4>Buy Shares</h4>
-
-
-                        {{ message }}
-                     {{ error }}{{ sharesobj.num_of_shares }}{{ shares.num_of_shares }}
+                            <h4>Buy Shares</h4>{{ messo }}
+{% if message %}
+<div class="alert alert-success">
+<button class="close" type="button" data-dismiss="alert"><span aria-hidden="true">×</span>
+</button>
+<p class="text-small">{{ message }}</p>
+</div>
+{% endif %}
+                        {% if error %}
+<div class="alert alert-danger">
+<button class="close" type="button" data-dismiss="alert"><span aria-hidden="true">×</span>
+</button>
+<p class="text-small">{{ error }}</p>
+</div>
+                        {% endif %}
 
 <form method="post" action="{% url 'user:shares' %}" enctype="multipart/form-data">
 
                          {% csrf_token %}
                         {% for field in form %}
-    <div class="form-group form-group-icon-left"><i class="fa fa-user input-icon input-icon-show"></i>
-    {{ field.label }}
+    <div class="form-group form-group-icon-left"><i class="fa fa-rocket input-icon input-icon-hightlight"></i>
+    <label>{{ field.label }}</label>
     {{ field.as_widget }}
     </div>
+
 {% endfor %}
 
 <hr>
-<input class="btn btn-primary" type="submit" value="Send Request">
+<input class="btn btn-primary" type="submit" value="Buy Shares">
 </form>
                         </div>
-                    <div class="col-md-4">
-                        <h4>My Shares</h4>
-                                 <div class="form-group">
-                                      <h5>Current Stock Markets</h5>
+                    <div class="col-md-6">
+                        <h4>Terms & Conditions </h4>
 
-                                 </div>
+                        <div class="row">
+
+<aside class="sidebar-right">
+    <ul class="address-list list">
+<li>
+    <h5><a href="#">Rule #1 </a></h5><p>Each member shall purchase at least one share of Ksh.100 each. Shares shall not be refundable or assignable as collateral for a loan, but a member may transfer his shares to other members on leaving membership of the Society.</p>
+</li>
+    <li>
+        <h5><a href="#">Rule #2</a></h5><p>Shares may earn dividends paid from net surplus after required transfers to reserves at the end of a financial year in accordance with the dividend policy of the Society.
+    </p>
+</li>
+
+
+</ul>
+</aside>
+      </div>
+
+
                         </div>
 
 

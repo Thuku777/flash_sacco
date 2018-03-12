@@ -5,6 +5,7 @@ from user.models import User
 
 
 class Savings(models.Model):
+    date=models.DateField(auto_now=True)
     userID = models.ForeignKey( User, on_delete=models.CASCADE )
     userAccName = models.CharField( max_length=20 )
     userAccNo = models.IntegerField()
@@ -31,12 +32,13 @@ class Savings(models.Model):
 class Shares(models.Model):
     savingsID = models.ForeignKey(Savings, on_delete=models.CASCADE )
     num_of_shares = models.IntegerField()
+    date=models.DateField(auto_now=True)
 
 
 class Deposits( models.Model ):
     savingsID = models.ForeignKey( Savings, on_delete=models.CASCADE )
-    num_of_shares = models.IntegerField()
     balance = models.IntegerField()
+    date=models.DateField(auto_now=True)
 
 
 class WithdrawalDeposits( models.Model ):
@@ -50,12 +52,13 @@ class WithdrawalDeposits( models.Model ):
         max_length=50,
         choices=account_choices,
     )
+    date=models.DateField(auto_now=True)
 
 
 class Loans( models.Model ):
     savingsID = models.ForeignKey(Savings, on_delete=models.CASCADE)
     amount = models.IntegerField()
-    deadline = models.DurationField()
+    deadline = models.DateField()
     interest = models.FloatField()
     loanDate = models.DateField()
     normal = 'normal'
@@ -66,3 +69,6 @@ class Loans( models.Model ):
         max_length=50,
         choices=loan_choices
     )
+    applicationForm=models.FileField()
+    date=models.DateField(auto_now=True)
+
