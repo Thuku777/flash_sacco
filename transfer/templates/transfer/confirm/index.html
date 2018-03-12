@@ -26,6 +26,9 @@
 
     <div class="global-wrap">
 
+        <header id="main-header">
+
+        </header>
 
         <div class="gap"></div>
 
@@ -33,38 +36,38 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-<i class="fa fa-check round box-icon-large box-icon-center box-icon-success mb30"></i>
-<h2 class="text-center">{{ request.session.sender_uname }}, your transfer action was successful!</h2>
-<h5 class="text-center mb30">Money has been sent to {{ request.session.recpt_uname }}</h5>
-<ul class="order-payment-list list mb30">
-    <li>
-        <div class="row">
-            <div class="col-xs-9">
-                <h5><i class="fa fa-money"></i> You have transfered money to {{ request.session.recpt_uname }}</h5>
-                <p><small>April 24, 2014</small>
-                </p>
-            </div>
-            <div class="col-xs-3">
-                <p class="text-right"><span class="text-lg">Ksh. {{ request.session.amnt_sent }}</span>
-                </p>
-            </div>
-        </div>
-    </li>
-    <li>
+                    <i class="fa fa-check round box-icon-large box-icon-center box-icon-success mb30"></i>
+                    <h2 class="text-center">{{ sender.firstName }}, your transfer was successful!</h2>
+                    <h5 class="text-center mb30">Transfer details have been sent to {{ sender.email }}</h5>
+                    <ul class="order-payment-list list mb30">
+                        <li>
                             <div class="row">
                                 <div class="col-xs-9">
-                                    <h5><i class="fa fa-money"></i> Available balance is the account number {{ request.session.sender_acc_no}} </h5>
+                                    <h5><i class="fa fa-money"></i>  You have transfered money to {{ recepient.firstName }}</h5>
+                                    <p><small>This date</small>
+                                    </p>
+                                </div>
+                                <div class="col-xs-3">
+                                    <p class="text-right"><span class="text-lg">Ksh {{ amount }}</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="row">
+                                <div class="col-xs-9">
+                                    <h5><i class="fa fa-money"></i> Available balance is the account number {{ senderobj.userAccNo }}</h5>
                                     <p><small>April 28, 2014</small>
                                     </p>
                                 </div>
                                 <div class="col-xs-3">
-                                    <p class="text-right"><span class="text-lg">Ksh. {{ request.session.sender_amnt_bal }}</span>
+                                    <p class="text-right"><span class="text-lg">Ksh {{ senderobj.userAccBal }}</span>
                                     </p>
                                 </div>
                             </div>
                         </li>
                     </ul>
-                    <h4 class="text-center">You might be interested in viewing our Security measures</h4>
+         <h4 class="text-center">You might be interested in viewing our Security measures</h4>
                     <ul class="list list-inline list-center">
                         <li><a class="btn btn-primary" href= "#"><i class="fa fa-building-o"></i> Https Protocol</a>
                             <p class="text-center lh1em mt5"><small><br /> </small>
@@ -78,35 +81,37 @@
                             <p class="text-center lh1em mt5"><small><br /></small>
                             </p>
                         </li>
-
                     </ul>
                 </div>
             </div>
             <div class="gap"></div>
         </div>
 
+
+
+
 	{% load static %}
         <script src="../..{% static "/js/bootstrap.js" %}"></script>
         <script src="../..{% static "/js/jquery.js" %}"></script>
-        <script src="../..{% static "js/bootstrap.js"%}"></script>
-        <script src="../..{% static "js/slimmenu.js"%}"></script>
-        <script src="../..{% static "js/bootstrap-datepicker.js"%}"></script>
-        <script src="../..{% static "js/bootstrap-timepicker.js"%}"></script>
-        <script src="../..{% static "js/nicescroll.js"%}"></script>
-        <script src="../..{% static "js/dropit.js"%}"></script>
-        <script src="../..{% static "js/ionrangeslider.js"%}"></script>
-        <script src="../..{% static "js/icheck.js"%}"></script>
-        <script src="../..{% static "js/fotorama.js"%}"></script>
+        <script src="../..{% static "/js/bootstrap.js"%}"></script>
+        <script src="../..{% static "/js/slimmenu.js"%}"></script>
+        <script src="../..{% static "/js/bootstrap-datepicker.js"%}"></script>
+        <script src="../..{% static "/js/bootstrap-timepicker.js"%}"></script>
+        <script src="../..{% static "/js/nicescroll.js"%}"></script>
+        <script src="../..{% static "/js/dropit.js"%}"></script>
+        <script src="../..{% static "/js/ionrangeslider.js"%}"></script>
+        <script src="../..{% static "/js/icheck.js"%}"></script>
+        <script src="../..{% static "/js/fotorama.js"%}"></script>
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-        <script src="../..{% static "js/typeahead.js"%}"></script>
-        <script src="../..{% static "js/card-payment.js"%}"></script>
-        <script src="../..{% static "js/magnific.js"%}"></script>
-        <script src="../..{% static "js/owl-carousel.js"%}"></script>
-        <script src="../..{% static "js/fitvids.js"%}"></script>
-        <script src="../..{% static "js/tweet.js"%}"></script>
-        <script src="../..{% static "js/countdown.js"%}"></script>
-        <script src="../..{% static "js/gridrotator.js"%}"></script>
-        <script src="../..{% static "js/custom.js"%}"></script>
+        <script src="../..{% static "/js/typeahead.js"%}"></script>
+        <script src="../..{% static "/js/card-payment.js"%}"></script>
+        <script src="../..{% static "/js/magnific.js"%}"></script>
+        <script src="../..{% static "/js/owl-carousel.js"%}"></script>
+        <script src="../..{% static "/js/fitvids.js"%}"></script>
+        <script src="../..{% static "/js/tweet.js"%}"></script>
+        <script src="../..{% static "/js/countdown.js"%}"></script>
+        <script src="../..{% static "/js/gridrotator.js"%}"></script>
+        <script src="../..{% static "/js/custom.js"%}"></script>
 
     </div>
 </body>

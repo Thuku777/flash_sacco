@@ -27,9 +27,59 @@
 <body>
 
     <div class="global-wrap">
-        <header id="main-header">
+           <header id="main-header">
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
 
-        </header>
+            <nav class="navbar ">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle " data-target="#myNavBar" data-toggle="collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand hidden-sm" href="#">Flash</a>
+                    </div>
+                    <div class="navbar-collapse collapse" id="myNavBar">
+                        <ul class="nav navbar-nav">
+                            <li><a href="{% url 'index' %} }}" class="active">Home</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Accounts<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Register</a></li>
+                                    <li><a href="#">Login</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="{% url 'transfer:formHandler' %}">Profile</a></li>
+
+                            <li><a href="#">Education</a></li>
+                            <li><a href="#">Partners</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Staff<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Login</a></li>
+                                    <li><a href="#">Register</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+                         </div>
+            </div>
+        </div>  <!-- //End container -->
+
+
+             </header>
+
+
 
         <div class="container">
             <h1 class="page-title">User Profile</h1>
@@ -53,7 +103,7 @@
                             </li>
                             <li><a href="{% url 'user:profileupdate'  DBobj.id %}"><i class="fa fa-cog"></i>Settings</a>
                             </li>
-                         <li><a href="{% url 'user:shares'%}"><i class="fa fa-cog"></i>Shares</a>
+                         <li><a href="{% url 'user:shares'%}"><i class="fa fa-life-ring"></i>Shares</a>
                             </li>
                             <li><a href="{% url 'user:members'%}"><i class="fa fa-group"></i>Group Account</a>
                             </li>
@@ -67,7 +117,9 @@
                     </aside>
                 </div>
                 <div class="col-md-9">
-
+<div class="row">
+    <h4>Welcome {{ DBobj.firstName }} </h4>
+</div>
                         <div class="col-md-5">
                             <h4>Apply for a loan</h4>
 
@@ -84,7 +136,7 @@
                          {% csrf_token %}
                         {% for field in form %}
     <div class="form-group form-group-icon-left"><i class="fa fa-user input-icon input-icon-show"></i>
-    {{ field.label }}
+    <label> {{ field.label }}</label>
     {{ field.as_widget }}
     </div>
 {% endfor %}
@@ -93,9 +145,87 @@
 <input class="btn btn-primary" type="submit" value="Send Application">
 </form>
                         </div>
-                    <div class="col-md-4">
-                        <h4>Loan Details</h4>
+                    <div class="col-md-7">
+                        <h4>Types of Loans</h4>
+                        <div class="panel-group" id="accordion">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" href="#collapse-1" data-toggle="collapse" data-parent="#accordion">Normal Loan</a></h4>
+                                    </div>
+                                    <div class="panel-collapse collapse" id="collapse-1" style="height: 0px;">
+                                        <div class="panel-body">
 
+                                           <ul class="address-list list">
+                            <li>
+                                <h5><a href="">Rule #1</a></h5><p> Repayment period will be 48 months. However a Member who qualifies for a loan equivalent to two times of his deposits because of 2/3 rule may be allowed to repay his loans within a period of sixty months.</p>
+                            </li>
+                            <li>
+                                <h5><a href="">Rule #2</a></h5><p>The interest rate shall be 1% per month on declining balance or as shall be determined by the BOD from time to time</p>
+                            </li>
+                            <li>
+                                <h5><a href="">Rule #3</a></h5><p>The total of all outstanding loans, including Supa-Sosa, emergency and school fees must not exceed four times a member’s deposit.
+</p>
+                            </li>
+                        </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" href="#collapse-2" data-toggle="collapse" data-parent="#accordion">Emergency Loan</a></h4>
+                                    </div>
+                                    <div class="panel-collapse collapse" id="collapse-2" style="height: 0px;">
+                                        <div class="panel-body">
+
+                                                        <ul class="address-list list">
+                            <li>
+                                <h5><a href="">Rule #1</a></h5><p>Emergency loan shall be granted for unforeseen circumstances.
+b) The total of all outstanding loans, including school fees, emergency and development loan, must not exceed three times a member’s deposit.</p>
+                            </li>
+                            <li>
+                                <h5><a href="">Rule #2</a></h5><p>Repayment period shall be twelve months</p>
+                            </li>
+                            <li>
+                                <h5><a href="">Rule #3</a></h5><p> The interest rate shall be 1% per month</p>
+                            </li>
+                        </ul>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" href="#collapse-3" data-toggle="collapse" data-parent="#accordion">School Fees Loan</a></h4>
+                                    </div>
+                                    <div class="panel-collapse collapse" id="collapse-3" style="height: 0px;">
+                                        <div class="panel-body">
+
+                                                            <ul class="address-list list">
+                            <li>
+                                <h5><a href="">Rule #1</a></h5>
+                                <p>School fees loan shall be granted for school fees purpose.</p>
+                            </li>
+                            <li>
+                                <h5><a href="">Rule #2</a></h5>
+                                <p>Repayment period shall be 12 months.</p>
+                            </li>
+                            <li>
+                                <h5><a href="">Rule #3</a></h5>
+                                <p>The interest rate shall be 1% per month.</p>
+                            </li>
+                                                                <li>
+                                <h5><a href="">Rule #4</a></h5>
+                                <p>The total of all outstanding loans, including emergency and development loan, must not exceed three times an applicant’s deposit.</p>
+                            </li>
+                        </ul>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
 

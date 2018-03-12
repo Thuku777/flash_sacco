@@ -1,3 +1,4 @@
+from PIL.Image import DecompressionBombError
 from django.shortcuts import render
 from django.db.migrations import questioner
 from django.shortcuts import render, get_object_or_404
@@ -16,8 +17,9 @@ from django.views.generic.edit import FormView
 import savings
 from user.loan_form import LoanForm, ProfileUpdateForm, PinUpdateForm, RegisterForm, RegisterGroupForm,SharesForm
 from django.views.generic.edit import UpdateView
-from savings.models import Savings, Shares
+from savings.models import Savings, Shares, Loans
 from user.models import User, Group
+from transfer.models import TransferHistory
 #from transfer.models import TransferHistory
 
 import django.contrib.sessions.backends.signed_cookies
@@ -42,37 +44,38 @@ def buySharesHandler(request):
                 DBobj = get_object_or_404(User, pk__exact=1)
                 savingsobj=get_object_or_404(Savings, pk__exact=1)
             except (KeyError, DBobj.DoesNotExist):
-                return HttpResponseRedirect('user/index.html',{'DBobj': DBobj})
+                context={
+                    'error':'No data found of the user',
+                    'DBobj':DBobj
+                }
+                return HttpResponseRedirect('user/shares.html',context)
             else:
 
                 obj, created=Shares.objects.get_or_create(defaults={'savingsID_id':1,'num_of_shares':numofshares})
-                if created == True:
+                if created==False:
                     shares= Shares.objects.get(savingsID_id=1)
-                    curshares=shares+numofshares
-                    shares.update(num_of_shares=curshares)
+                    curshares=shares.num_of_shares+numofshares
+                    Shares.objects.filter(savingsID_id=1).update(num_of_shares=curshares)
+                    message = 'Shares have bought successfully'
 
-                message = 'Shares have bought successfully'
                 context = {
                     'form': form,
-                    'DBobj': DBobj,
-                    'savingsobj': savingsobj,
-                    'message': message
+                    'message': 'asdfghjkldfghj',
+                    'DBoj': DBobj
+
                 }
                 return HttpResponseRedirect(reverse('user:shares'), context)
     else:
 
         DBobj = get_object_or_404(User, pk__exact=1)
         form = SharesForm()
-        sharesobj=Shares.objects.get(savingsID_id=1)
+        #sharesobj=Shares.objects.get(savingsID_id=1)
 
         context={
             'form': form,
             'DBobj':DBobj,
-            'error':'erorr',
-            'sharesobj':sharesobj
-
+            #'sharesobj':sharesobj
         }
-
         return render(request, 'user/shares.html',context)
 
 
@@ -85,10 +88,16 @@ class UserPage(TemplateView):
         uid = self.request.session['id'] = 1
         self.DBobj = get_object_or_404( User, pk__iexact=uid )
         self.savingsobj = get_object_or_404(Savings, pk__iexact=uid)
+        self.groupobj=get_object_or_404(Group, groupAccName__iexact=self.DBobj.group)
+
         #self.sharesobj = get_object_or_404(Shares, pk__iexact=uid )
         ##########################################################
-        context["DBobj"] = self.DBobj
-        context['savingsobj']=self.savingsobj
+        context={
+            'DBobj':self.DBobj,
+            'savingsobj':self.savingsobj,
+            'groupobj':self.groupobj
+        }
+
         return context
 
 
@@ -114,7 +123,99 @@ class Update(UpdateView):
         #self.pinUpdate(self.kwargs['slug'])
         return context
 
-    def pinUpdate(request, id):
+
+class Member(TemplateView):
+    template_name = 'user/members.html'
+
+    def get_context_data(self, **kwargs):
+        context = super( Member, self ).get_context_data( **kwargs )
+        # uname=self.request.session['uname']="charles mwaniki"
+        ###########################################################
+        DBobj = get_object_or_404(User, pk=1)
+        groupobj=get_object_or_404(Group, pk=1)
+        userSet = User.objects.filter(group=groupobj.id)
+        ###########################################################
+        context['DBobj'] = DBobj
+        context['userSet']=userSet
+        return context
+
+
+class History(TemplateView):
+    template_name = 'user/history.html'
+
+    def get_context_data(self, **kwargs):
+        context = super( History, self ).get_context_data( **kwargs )
+        # uname=self.request.session['uname']="charles mwaniki"
+        ###########################################################
+        DBobj = get_object_or_404( User, pk=1 )
+        savingobj=Savings.objects.get(userID_id=DBobj.id)
+        historySet = TransferHistory.objects.filter(userAccNo__exact=savingobj.userAccNo)
+        userSet = User.objects.all()
+        ###########################################################
+        context['DBobj'] = DBobj
+        context['userSet'] = userSet
+        context['historySet'] = historySet
+
+        return context
+
+
+class Loans(TemplateView):
+    template_name = 'user/loans.html'
+    form_class = LoanForm
+
+    def get_context_data(self, **kwargs):
+        context = super( Loans, self ).get_context_data( **kwargs )
+        # uname=self.request.session['uname']="charles mwaniki"
+        ###########################################################
+        DBobj = get_object_or_404( User, pk=1 )
+        ###########################################################
+        context['form'] = LoanForm
+        context['DBobj'] = DBobj
+        return context
+
+
+def loansHandler(request):
+
+    if request.method == 'POST':
+        form = LoanForm(request.POST, request.FILES)
+        if form.is_valid():
+            applicantId = form.cleaned_data['applicantId']
+            refereeID = form.cleaned_data['refereeID']
+            guarantor = form.cleaned_data['guarantor']
+            amount = form.cleaned_data['amount']
+            applicationForm = request.FILES['applicationForm']
+            try:
+                DBobj = get_object_or_404(User, pk__exact=1)
+                savingsobj=Savings.objects.get(userID_id=DBobj.id)
+            except (KeyError, DBobj.DoesNotExist):
+                return HttpResponseRedirect('user/loans.html',{'DBobj': DBobj})
+            else:
+                Loans.objects.create(savingsID=savingsobj.id, amount=amount, deadline=None, interest=2, loanDate=None, loan_options='normal',applicationForm=applicationForm)
+
+                message = 'Shares have bought successfully'
+                context = {
+                    'form': form,
+                    'DBobj': DBobj,
+
+                    'message': message
+                }
+                return HttpResponseRedirect(reverse('user:loans'), context)
+    else:
+
+        DBobj = get_object_or_404(User, pk__exact=1)
+        form = LoanForm()
+        #sharesobj=Shares.objects.get(savingsID_id=1)
+
+        context={
+            'form': form,
+            'DBobj':DBobj,
+            'error':'erorr',
+            #'sharesobj':sharesobj
+        }
+        return render(request, 'user/loans.html',context)
+
+
+def pinUpdate(request, id):
         if request.method == 'POST':
             form = PinUpdateForm( request.POST )
             if form.is_valid():
@@ -142,52 +243,9 @@ class Update(UpdateView):
                         return HttpResponseRedirect( reverse('user:profileupdate', args=[id] ), {'form': form, 'error': message, })
             else:
                 form = PinUpdateForm()
-                return HttpResponseRedirect( render(request, 'user:profileupdate', {'form': form}))
-
-
-class Member(TemplateView):
-    template_name = 'user/members.html'
-
-    def get_context_data(self, **kwargs):
-        context = super( Member, self ).get_context_data( **kwargs )
-        # uname=self.request.session['uname']="charles mwaniki"
-        ###########################################################
-        DBobj = get_object_or_404(User, pk=1)
-        groupobj=get_object_or_404(Group, pk=1)
-        userSet = User.objects.filter(group=groupobj.id)
-        ###########################################################
-        context['DBobj'] = DBobj
-        context['userSet']=userSet
-        return context
-
-
-class History(TemplateView):
-    template_name = 'user/history.html'
-
-    def get_context_data(self, **kwargs):
-        context = super( History, self ).get_context_data( **kwargs )
-        # uname=self.request.session['uname']="charles mwaniki"
-        ###########################################################
-        DBobj = get_object_or_404( User, pk=1 )
-        #TransferHistyor
-        historySet = User.objects.all()
-        ###########################################################
-        context['DBobj'] = DBobj
-        context['userSet'] = historySet
-
-        return context
-
-
-class Loans(TemplateView):
-    template_name = 'user/loans.html'
-    form_class = LoanForm
-
-    def get_context_data(self, **kwargs):
-        context = super( Loans, self ).get_context_data( **kwargs )
-        # uname=self.request.session['uname']="charles mwaniki"
-        ###########################################################
-        DBobj = get_object_or_404( User, pk=1 )
-        ###########################################################
-        context['form'] = LoanForm
-        context['DBobj'] = DBobj
-        return context
+                DBobj= get_object_or_404(User, pk__exact=id)
+                context={
+                    'form':form,
+                    'DBobj':DBobj,
+                }
+                return render(request, 'user/settings.html', context)

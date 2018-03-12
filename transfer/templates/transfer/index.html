@@ -26,9 +26,58 @@
 <body>
 
     <div class="global-wrap">
-        <header id="main-header">
-  
-        </header>
+             <header id="main-header">
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+
+            <nav class="navbar ">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle " data-target="#myNavBar" data-toggle="collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand hidden-sm" href="#">Flash</a>
+                    </div>
+                    <div class="navbar-collapse collapse" id="myNavBar">
+                        <ul class="nav navbar-nav">
+                            <li><a href="{% url 'index' %} }}" class="active">Home</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Accounts<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Register</a></li>
+                                    <li><a href="#">Login</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="{% url 'transfer:formHandler' %}">Profile</a></li>
+
+                            <li><a href="#">Education</a></li>
+                            <li><a href="#">Partners</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Staff<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Login</a></li>
+                                    <li><a href="#">Register</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+                         </div>
+            </div>
+        </div>  <!-- //End container -->
+
+
+             </header>
+
 
         <div class="container">
             <h1 class="page-title">Transfer Funds</h1>
@@ -37,64 +86,79 @@
         <div class="container">
             <div class="row" data-gutter="60">
                 <div class="col-md-4">
-                    <h3>Welcome {{ username.userAccName }}.</h3>
+                    <h3>Welcome {{ username.firstName }}.</h3>
                     <p>We are a public SME banking operator and ground handler. Our advantage is being small enough to treat every small client as an individual and not just the statistics.</p>
                     <p>Our packages are planned to suit clients looking for a comfortable standard of saving and withdrawals together with an informative guide coupled with an impressive track record.</p>
                 </div>
 
-
-
                 <div class="col-md-4">
                     <h3>Transfer Money</h3>
- {% for error in field.errors %}
+ {% if error %}
      <div class="row">
-         <div class="alert alert-danger">{{error}}</div>
+         <div class="alert alert-danger">
+                                <button class="close" type="button" data-dismiss="alert"><span aria-hidden="true">×</span>
+                                </button>
+                                <p class="text-small">{{ error }}</p>
+                            </div>
      </div>
- {% endfor %}
+ {% endif %}
 
-                    <form action="{% url 'transfer:formHandler' username.id%}" method="POST">
+                    <form action="{% url 'transfer:formHandler'%}" method="POST">
                          {% csrf_token %}
                         {% for field in form %}
-    <div class="form-group form-group-icon-left"><i class="fa fa-user input-icon input-icon-show"></i>
-    {{ field.label }}
+    <div class="form-group form-group-icon-left"><i class="fa fa-user input-icon input-icon-highlight"></i>
+    <label>{{ field.label }}</label>
     {{ field.as_widget }}
     </div>
 {% endfor %}
-<div class="checkbox">
-<label>
-    <input name="remember" autocomplete="off" type="checkbox">Confirm  Transaction!</label>
-</div>
+
+
       <input type="hidden" name="subinput" value="1">
-    <input class="btn btn-primary" required autocomplete="off" type="submit" value="Send" />
+    <input class="btn btn-primary" required autocomplete="off" type="submit" value="Transfer Money" />
 </form>
 </div>
 
 <div class="col-md-4">
-<h3> Account Status</h3>
-    <div class="form-group form-group-icon-left">
-        <label> Current Balance</label>
-  <p>Ksh. {{ username.userAccBal }}</p>
-    </div>
 
-	    <div class="form-group form-group-icon-left">
-        <label> Account Type</label>
-  <p>  {{ username.userAccNo }}</p>
-    </div>
+     <h3>Terms & Conditions </h3>
+                        <div class="row">
 
-	    <div class="form-group form-group-icon-left">
-        <label>Number of Shares</label>
-  <p>{{ username.userAccBal }}</p>
-    </div>
+<aside class="sidebar-right">
+    <ul class="address-list list">
+<li>
+    <h5><a href="#">Rule #1 </a></h5>
+    <p>
+The maximum amount a registered user can transfer is Ksh 300, 000.
+</p>
+</li>
+    <li>
+        <h5><a href="#">Rule #2</a></h5>
+        <aside class="sidebar-right">
+        <ul class="address-list list">
+<li> <h5><a href="#">Internal Transfers</a></h5>
+<p>Customers can transfer money within any of their Deposit accounts.
+    Transaction charges apply where applicable.</p>
+</li>
 
-	    <div class="form-group form-group-icon-left">
-        <label>Current Stock Value </label>
-  <p>One stock share is trading at Ksh 59.34</p>
-    </div>
+            <li> <h5><a href="#">External Transfers</a></h5>
+<p>Customers can transfer money within any of their Deposit accounts.
+    Transaction charges apply where applicable.</p>
+</li>
 
-                </div>
-				
-				
+        </ul>
+        </aside>
+</li>
+
+
+</ul>
+</aside>
+      </div>
+
+
             </div>
+
+
+</div>
         </div>
 
         <div class="gap"></div>

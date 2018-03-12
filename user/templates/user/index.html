@@ -22,9 +22,59 @@
 <body>
 
     <div class="global-wrap">
-        <header id="main-header">
+           <header id="main-header">
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
 
-        </header>
+            <nav class="navbar ">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle " data-target="#myNavBar" data-toggle="collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand hidden-sm" href="#">Flash</a>
+                    </div>
+                    <div class="navbar-collapse collapse" id="myNavBar">
+                        <ul class="nav navbar-nav">
+                            <li><a href="{% url 'index' %} }}" class="active">Home</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Accounts<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Register</a></li>
+                                    <li><a href="#">Login</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="{% url 'transfer:formHandler' %}">Profile</a></li>
+
+                            <li><a href="#">Education</a></li>
+                            <li><a href="#">Partners</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Staff<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Login</a></li>
+                                    <li><a href="#">Register</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+                         </div>
+            </div>
+        </div>  <!-- //End container -->
+
+
+             </header>
+
+
 
         <div class="container">
             <h1 class="page-title">User Profile</h1>
@@ -44,7 +94,7 @@
                             </li>
                             <li><a href="{% url 'user:profileupdate'  DBobj.id %}"><i class="fa fa-cog"></i>Settings</a>
                             </li>
-                         <li><a href="{% url 'user:shares'%}"><i class="fa fa-cog"></i>Shares</a>
+                         <li><a href="{% url 'user:shares'%}"><i class="fa fa-life-ring"></i>Shares</a>
                             </li>
                             <li><a href="{% url 'user:members'%}"><i class="fa fa-group"></i>Group Account</a>
                             </li>
@@ -53,45 +103,84 @@
                             <li><a href="{% url 'user:history'%}"><i class="fa fa-clock-o"></i>Account History</a>
                             </li>
 
-{{ message }}
                         </ul>
                     </aside>
                 </div>
                 <div class="col-md-9">
+<div class="row">
+    <h4>Welcome {{ DBobj.firstName }} </h4>
+</div>
+<div class="row">
+<div class="col-md-5">
+<h4>Personal Information</h4>
+<ul class="address-list list">
+<li>
+<h5>Full Names</h5><a href="#">{{ DBobj.firstName }} {{ DBobj.lastName }}</a>
+</li>
+    <li>
+<h5>Identification Number</h5><a href="#">{{ DBobj.IDnumber }}</a>
+</li>
+<li>
+<h5>Phone Number</h5><a href="#">+254-{{ DBobj.contact }}</a>
+</li>
+<li>
+<h5>Email</h5><a href="#">{{ DBobj.email }}</a>
+</li>
+<li>
+<h5>Address</h5><address>{{ DBobj.firstName }} {{ DBobj.lastName }}.<br>{{ DBobj.address }}, {{ DBobj.code }}<br>{{ DBobj.town }}<br>Kenya<br></address>
+</li>
+</ul>
 
+</div>
+<div class="col-md-4 col-md-offset-1">
+    <div class="row">
+<h4>Account Information</h4>
+<aside class="sidebar-right">
+    <ul class="address-list list">
+<li>
+<h5>Type of Account </h5><a href="#">{{ savingsobj.acc_options }}</a>
+</li>
+    <li>
+<h5>Account Number</h5><a href="#">{{ savingsobj.userAccNo }}</a>
+</li>
+<li>
+<h5>Account Balance</h5><a href="#">Ksh. {{ savingsobj.userAccBal }}</a>
+</li>
+<li>
+<h5>Capital Equity</h5><a href="#">{{ savingsobj.userAccBal }}</a>
+</li>
 
+</ul>
+</aside>
+      </div>
 
-                    <div class="row">
-                        <div class="col-md-5">
-                         <h4>Welcome {{ DBobj.firstName }}</h4>
+    <div class="row">
+<h4>Group Account Information</h4>
+<aside class="sidebar-right">
+    <ul class="address-list list">
+            <li>
+<h5>Account Name</h5><a href="#">{{ groupobj.groupAccName }}</a>
+</li>
 
-                            <div class="form-group form-group-icon-left">
-                                <h5>Account Number</h5>
-                         <p>{{ DBobj.firstName }}</p>
-                          </div>
+<li>
+<h5>Type of Account </h5><a href="#">{{ savingsobj.acc_options }}</a>
+</li>
+<li>
+<h5>Account Number</h5><a href="#">Ksh. {{ groupobj.groupAccNo }}</a>
+</li>
+<li>
+<h5>Account Balance</h5><a href="#">{{ groupobj.groupAccBal }}</a>
+</li>
+<li>
+<h5>Registered Members</h5><a href="#">5</a>
+</li>
 
-                             <div class="form-group form-group-icon-left">
-                                <h5>Account Number</h5>
-                         <p>{{ DBobj.firstName }}</p>
-                          </div>
+</ul>
+</aside>
+      </div>
 
-
-                             <div class="form-group form-group-icon-left">
-                                <h5>Account Number</h5>
-                         <p>{{ DBobj.firstName }}</p>
-                          </div>
-
-                             <div class="form-group form-group-icon-left">
-                                <h5>Account Number</h5>
-                         <p>{{ DBobj.firstName }}</p>
-                          </div>
-
-                        </div>
-                        <div class="col-md-4 col-md-offset-1">
-                            <h4>Change Password</h4>
-
-                        </div>
-                    </div>
+</div>
+</div>
 
                 </div>
             </div>
@@ -99,28 +188,29 @@
 
 
         <div class="gap"></div>
-       	{% load static %}
-        <script src="..{% static "/js/bootstrap.js" %}"></script>
-        <script src="..{% static "/js/jquery.js" %}"></script>
-        <script src="..{% static "js/bootstrap.js"%}"></script>
-        <script src="..{% static "js/slimmenu.js"%}"></script>
-        <script src="..{% static "js/bootstrap-datepicker.js"%}"></script>
-        <script src="..{% static "js/bootstrap-timepicker.js"%}"></script>
-        <script src="..{% static "js/nicescroll.js"%}"></script>
-        <script src="..{% static "js/dropit.js"%}"></script>
-        <script src="..{% static "js/ionrangeslider.js"%}"></script>
-        <script src="..{% static "js/icheck.js"%}"></script>
-        <script src="..{% static "js/fotorama.js"%}"></script>
+
+		{% load static %}
+        <script src="../..{% static "/js/bootstrap.js" %}"></script>
+        <script src="../..{% static "/js/jquery.js" %}"></script>
+        <script src="../..{% static "/js/bootstrap.js"%}"></script>
+        <script src="../..{% static "/js/slimmenu.js"%}"></script>
+        <script src="../..{% static "/js/bootstrap-datepicker.js"%}"></script>
+        <script src="../..{% static "/js/bootstrap-timepicker.js"%}"></script>
+        <script src="../..{% static "/js/nicescroll.js"%}"></script>
+        <script src="../..{% static "/js/dropit.js"%}"></script>
+        <script src="../..{% static "/js/ionrangeslider.js"%}"></script>
+        <script src="../..{% static "/js/icheck.js"%}"></script>
+        <script src="../..{% static "/js/fotorama.js"%}"></script>
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-        <script src="..{% static "js/typeahead.js"%}"></script>
-        <script src="..{% static "js/card-payment.js"%}"></script>
-        <script src="..{% static "js/magnific.js"%}"></script>
-        <script src="..{% static "js/owl-carousel.js"%}"></script>
-        <script src="..{% static "js/fitvids.js"%}"></script>
-        <script src="..{% static "js/tweet.js"%}"></script>
-        <script src="..{% static "js/countdown.js"%}"></script>
-        <script src="..{% static "js/gridrotator.js"%}"></script>
-        <script src="..{% static "js/custom.js"%}"></script>
+        <script src="../..{% static "/js/typeahead.js"%}"></script>
+        <script src="../..{% static "/js/card-payment.js"%}"></script>
+        <script src="../..{% static "/js/magnific.js"%}"></script>
+        <script src="../..{% static "/js/owl-carousel.js"%}"></script>
+        <script src="../..{% static "/js/fitvids.js"%}"></script>
+        <script src="../..{% static "/js/tweet.js"%}"></script>
+        <script src="../..{% static "/js/countdown.js"%}"></script>
+        <script src="../..{% static "/js/gridrotator.js"%}"></script>
+        <script src="../..{% static "/js/custom.js"%}"></script>
     </div>
 </body>
 

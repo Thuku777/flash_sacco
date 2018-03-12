@@ -27,9 +27,59 @@
 <body>
 
     <div class="global-wrap">
-        <header id="main-header">
+           <header id="main-header">
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
 
-        </header>
+            <nav class="navbar ">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle " data-target="#myNavBar" data-toggle="collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand hidden-sm" href="#">Flash</a>
+                    </div>
+                    <div class="navbar-collapse collapse" id="myNavBar">
+                        <ul class="nav navbar-nav">
+                            <li><a href="{% url 'index' %} }}" class="active">Home</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Accounts<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Register</a></li>
+                                    <li><a href="#">Login</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="{% url 'transfer:formHandler' %}">Profile</a></li>
+
+                            <li><a href="#">Education</a></li>
+                            <li><a href="#">Partners</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Staff<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Login</a></li>
+                                    <li><a href="#">Register</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+                         </div>
+            </div>
+        </div>  <!-- //End container -->
+
+
+             </header>
+
+
 
         <div class="container">
             <h1 class="page-title">User Profile</h1>
@@ -54,7 +104,7 @@
                             </li>
                             <li><a href="{% url 'user:profileupdate'  DBobj.id %}"><i class="fa fa-cog"></i>Settings</a>
                             </li>
-                         <li><a href="{% url 'user:shares'%}"><i class="fa fa-cog"></i>Shares</a>
+                         <li><a href="{% url 'user:shares'%}"><i class="fa fa-life-ring"></i>Shares</a>
                             </li>
                             <li><a href="{% url 'user:members'%}"><i class="fa fa-group"></i>Group Account</a>
                             </li>
@@ -68,7 +118,9 @@
                     </aside>
                 </div>
                 <div class="col-md-9">
-
+<div class="row">
+    <h4>Welcome {{ DBobj.firstName }} </h4>
+</div>
 
         <div class="row">
                         <div class="col-md-5">
@@ -99,11 +151,31 @@
  {% endfor %}
 
                             <form action="" method="post">
-                                <h4>Personal Infomation</h4>
+                                <h4>Personal Information</h4>
+
+                             {% if success %}
+     <div class="row">
+         <div class="alert alert-success">
+                                <button class="close" type="button" data-dismiss="alert"><span aria-hidden="true">×</span>
+                                </button>
+                                <p class="text-small">{{ success }}</p>
+                            </div>
+     </div>
+ {% endif %}
+                             {% if error %}
+     <div class="row">
+         <div class="alert alert-danger">
+                                <button class="close" type="button" data-dismiss="alert"><span aria-hidden="true">×</span>
+                                </button>
+                                <p class="text-small">{{ error }}</p>
+                            </div>
+     </div>
+ {% endif %}
+
                         {% csrf_token %}
                      {% for field in form %}
-                          <div class="form-group form-group-icon-left"><i class="fa fa-user input-icon"></i>
-                         {{ field.label }}
+                          <div class="form-group form-group-icon-left"><i class="fa fa-user input-icon input-icon-highlight"></i>
+                        <label> {{ field.label }}</label>
                         {{ field }}
                           </div>
                     {% endfor %}
@@ -118,8 +190,8 @@
                             <form action="{% url 'user:profileupdate'  DBobj.id %}" method="POST">
                          {% csrf_token %}
                         {% for field in pinform %}
-    <div class="form-group form-group-icon-left"><i class="fa fa-user input-icon input-icon-show"></i>
-    {{ field.label }}
+    <div class="form-group form-group-icon-left"><i class="fa fa-user input-icon input-icon-highlight"></i>
+    <label> {{ field.label }}</label>
     {{ field.as_widget }}
     </div>
 {% endfor %}

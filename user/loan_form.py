@@ -25,6 +25,7 @@ class LoanForm (forms.Form ):
         attrs={'class': 'form-control', 'required': True, 'autocomplete': 'off',
                'placeholder': 'Account Holders ID number'} ), label=' National ID' )
 
+
     refereeID = forms.IntegerField( widget=forms.TextInput(
         attrs={'class': 'form-control', 'required': True, 'autocomplete': 'off',
                'placeholder': 'Referees ID number'} ), label=' National ID' )
@@ -33,13 +34,23 @@ class LoanForm (forms.Form ):
         attrs={'class': 'form-control', 'required': True, 'autocomplete': 'off', 'placeholder': 'Guarantors Name'} ),
                                     label='Guarantors Name' )
 
+    loan_choices = (
+        ('normal', 'Normal Loan'),
+        ('emergency', 'Emergency Loan'),
+        ('fees','Fees Loan')
+    )
+    loan_options = forms.CharField(
+        max_length=30,
+        widget=forms.Select( choices=loan_choices, attrs={'class': 'form-control', 'required': True, 'autocomplete': 'off'}),
+    )
+
     amount = forms.IntegerField( widget=forms.TextInput(
         attrs={'class': 'form-control', 'required': True, 'autocomplete': 'off', 'placeholder': 'Loan Amount'} ),
                                     label='Amount' )
 
-    file_field = forms.FileField( widget=forms.ClearableFileInput( attrs=
+    applicationForm = forms.FileField( widget=forms.FileInput( attrs=
                                                                    {'multiple': True, 'webkitdirectory': True,
-                                                                    'directory': True} ) )
+                                                                    'directory': True} ) ,label='Application Form')
 
 
 class ProfileUpdateForm(forms.ModelForm):
@@ -129,7 +140,7 @@ class RegisterGroupForm(forms.ModelForm):
 
 
 class SharesForm(forms.Form):
-  num_of_shares=forms.IntegerField(widget=forms.TextInput(attrs={'class':'form-control', 'required':True, 'autocomplete':'off','placeholder':'Account Number' }), label='ASharess')
+  num_of_shares=forms.IntegerField(widget=forms.TextInput(attrs={'class':'form-control', 'required':True, 'autocomplete':'off','placeholder':'Number of Shares to Buy' }), label='Shares')
   #num_of_shares=forms.IntegerField(widget=forms.TextInput(attrs={'class':'form-control unknown', 'required':True, 'autocomplete':'off','placeholder':'Number of Shares' }), label='Shares')
 
 
